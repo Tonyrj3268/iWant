@@ -1,24 +1,25 @@
 <?php
 require_once 'connect.php';
-$sql = "SELECT *, date_format(chatdate,'%d-%m-%Y %r') 
-as cdt from chat order by ID desc limit 200";
-$sql = "SELECT * FROM (" . $sql . ") as ch order by ID";
-$result = mysql_query($sql) or die('Query failed: ' . mysql_error());
+session_start();
 
-// Update Row Information
-$msg="";
-while ($line = mysql_fetch_array($result, MYSQL_ASSOC))
+$data = array(
+ ':to_user_id'  => $_POST['to_user_id'],
+ ':from_user_id'  => $_SESSION['user_id'],
+ ':chat_message'  => $_POST['chat_message'],
+ ':status'   => '1'
+);
+
+$query = "
+INSERT INTO user_chat 
+(to_user_id, user_id, chat_msg, status) 
+VALUES (:to_user_id, :from_user_id, :chat_message, :status)
+";
+
+$statement = $connect->prepare($query);
+
+if($statement->execute($data))
 {
-   $msg = $msg . "" .
-        "" .
-        "";
+ echo fetch_user_chat_history($_SESSION['user_id'], $_POST['to_user_id'], $connect);
 }
-$msg=$msg . "<table style="color: blue; font-family: verdana, arial;" . 
-  "font-size: 10pt;" border="0">
-  <tbody><tr><td>" . $line["cdt"] . 
-  " </td><td>" . $line["username"] . 
-  ": </td><td>" . $line["msg"] . 
-  "</td></tr></tbody></table>";
 
-echo $msg;
 ?>

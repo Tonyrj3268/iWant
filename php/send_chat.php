@@ -1,18 +1,24 @@
 <?php
 require_once 'connect.php';
+$to_user_id = $_POST['to_user_id'];
+$user_id = $_COOKIE['name'];
+$chat_message = $_POST['chat_message'];
 
-$msg = $_POST["msg"];
-$dt = date("Y-m-d H:i:s");
-$user = $_POST["name"];
-
-$query="INSERT INTO user_chat(user_ID,chat_date,chat_msg) " .
-      "values(" . $user . "," . $dt. "," . $msg . ");";
-
-      echo $query;
+$query = "
+INSERT INTO user_chat 
+(to_user_id, user_id, chat_msg, status) 
+VALUES ('$to_user_id','$user_id','$chat_message','1')
+";
 
 $result = mysqli_query($conn,$query);
-if(!$result)
+
+if($result)
 {
-    throw new Exception('Query failed: ' . mysqli_error($conn));
-    exit();
-}?>
+    echo fetch_user_chat_history($_COOKIE['name'], $_POST['to_user_id'], $conn);
+}
+else{
+    echo $to_user_id."_".$user_id."_".$chat_message;
+    //echo "fail";
+}
+
+?>

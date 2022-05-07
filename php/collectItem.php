@@ -1,12 +1,24 @@
 <?php 
     require_once 'connect.php';
     $category=$_POST['category'];
-    $query = "select stuff_ID,stuff_status,stuff_topic,user_account from stuff_info Where stuff_status='$category' ORDER BY stuff_ID desc";
+    $query = "select * from stuff_info Where stuff_status='$category' ORDER BY stuff_ID desc";
             $result = mysqli_query($conn,$query);
             if ($result){
                 if (mysqli_num_rows($result)>0) {
+                    $i =0;
                     while($row = $result->fetch_assoc()) {
-                        echo "<div class='item-item' onclick='showItem(this)' postfrom=".$row["user_account"]. " data-index=" .$row["stuff_ID"]. "><a>" . $row["stuff_status"] . " : " .  $row["stuff_topic"] . "</a></div>";
+                        $i++;
+                        echo "<div class='item-item' onclick='showItem(this)' postfrom=".$row["user_account"]. " data-index=" .$row["stuff_ID"]. ">
+                        <div style='width:100px;line-height:154px;text-align:center;'>".$i."."."</div>
+                        <div><img src = uploads/".$row["stuff_img_name"]." id ='stuff_img'></div>
+                        <div style='width:600px;'>
+                        <a>物品名稱 : " .  $row["stuff_topic"] . "</a><br>
+                        <a>物品編號 : " .  $row["stuff_ID"] . "</a><br>
+                        <a>物品描述 : " .  $row["stuff_content"] . "</a><br>
+                        <a>出租者 : " .  $row["user_account"] . "</a><br>
+                        <a>價格 : " .  $row["stuff_price"] ."/1小時". "</a><br>
+                        <a>物品評價 : " .  $row["stuff_topic"] . "</a><br></div>
+                        </div><hr/>";
                     }
                 }
                 else{

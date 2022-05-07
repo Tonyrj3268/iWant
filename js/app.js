@@ -197,11 +197,14 @@ function showItem(element){
   }
   $(".datepicker").datepicker({
     dateFormat: "yy-mm-dd", //修改顯示順序
-    todayButton: true
+    todayButton: true.valueOf,
+    dayNamesMin : ['日', '一', '二', '三', '四', '五', '六'],
+    minDate: 0, maxDate: "+1M +10D" 
   });
   $("#datetimepicker").datetimepicker({
     datepicker:false,
     format:'H:i',
+   
     /*allowTimes:[
       '09:00',
       '11:00',
