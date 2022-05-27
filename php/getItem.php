@@ -15,6 +15,7 @@
                                 <a name="price">Price: '.$row["stuff_price"] .'</a><input type="hidden" name="price" value='.$row["stuff_price"] .'></input><br>
                                 <a name="place">Place: '.$row["stuff_place"] .'</a><input type="hidden" name="place" value='.$row["stuff_place"] .'></input><br>
                                 <a id="user_name" name="user">From: '.$row["user_account"] .'</a><input type="hidden" name="user" value='.$row["user_account"] .'></input><br>
+                                <input type="text" style="widht:1px;height:1px;opacity: 0;"><br>
                                 <p>Date:<input type="text" class="datepicker" id="datepicker" placeholder="請選擇日期"></p><br>
                                 <p>Time:<input type="text" id="datetimepicker" placeholder="請選擇時間"></p><br>
                                 ';
@@ -27,6 +28,7 @@
                                 <a name="price">Price: '.$row["stuff_price"] .'</a><input type="hidden" name="price" value='.$row["stuff_price"] .'></input><br>
                                 <a name="place">Place: '.$row["stuff_place"] .'</a><input type="hidden" name="place" value='.$row["stuff_place"] .'></input><br>
                                 <a id="user_name" name="user">From: '.$row["user_account"] .'</a><input type="hidden" name="user" value='.$row["user_account"] .'></input><br>
+                                <input type="text" style="widht:1px;height:1px;opacity: 0;"><br>
                                 <p>Date:<input type="text" class="datepicker" id="datepicker"placeholder="請選擇日期"></p><br>
                                 <p>Time:<input type="text" id="datetimepicker" placeholder="請選擇時間"></p><br>';
                         }  

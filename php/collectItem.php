@@ -2,6 +2,7 @@
     require_once 'connect.php';
     
     $category=$_POST['category'];
+<<<<<<< HEAD
     //$query = "select * from stuff_info Where stuff_status='$category' ORDER BY stuff_ID desc";
     $query = "select * from stuff_info Where stuff_status='$category' ORDER BY stuff_ID desc";
     
@@ -11,6 +12,14 @@
                     $i =0;
                     while($row = $result->fetch_assoc()) {
                         
+=======
+    $query = "select * from stuff_info Where stuff_status='$category' ORDER BY stuff_ID desc";
+            $result = mysqli_query($conn,$query);
+            if ($result){
+                if (mysqli_num_rows($result)>0) {
+                    $i =0;
+                    while($row = $result->fetch_assoc()) {
+>>>>>>> 17a6524857b812e010b84f2c440360e9498bc338
                         $i++;
                         echo "<div class='item-item' onclick='showItem(this)' postfrom=".$row["user_account"]. " data-index=" .$row["stuff_ID"]. ">
                         <div style='width:100px;line-height:154px;text-align:center;'>".$i."."."</div>
@@ -21,7 +30,11 @@
                         <a>物品描述 : " .  $row["stuff_content"] . "</a><br>
                         <a>出租者 : " .  $row["user_account"] . "</a><br>
                         <a>價格 : " .  $row["stuff_price"] ."/1小時". "</a><br>
+<<<<<<< HEAD
                         <a>物品評價 : " . count_rating($row["stuff_ID"],$conn) . "</a><br></div>
+=======
+                        <a>物品評價 : " .  $row["stuff_topic"] . "</a><br></div>
+>>>>>>> 17a6524857b812e010b84f2c440360e9498bc338
                         </div><hr/>";
                     }
                 }

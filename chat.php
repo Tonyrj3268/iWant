@@ -26,16 +26,72 @@
     </div>
     <?php include 'php/header_bar.php';?>
 
-    <div>
-        <div id='chatList'>List</div>
-        <div id='chatContainer'>
-            <div id='chatHeadBar'>Head</div>
-            <div id='chatContent'>Content</div>
-            <div>
-                <input type="text" name="msg" id="msg">
-                <button onclick="set_chat_msg()">傳送</button>
-            </div>
-        </div>
-    </div>
+    <style>
+
+.chat_message_area
+{
+ position: relative;
+ width: 100%;
+ height: auto;
+ background-color: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+}
+
+#group_chat_message
+{
+ width: 100%;
+ height: auto;
+ min-height: 80px;
+ overflow: auto;
+ padding:6px 24px 6px 12px;
+}
+
+.image_upload
+{
+ position: absolute;
+ top:3px;
+ right:3px;
+}
+.image_upload > form > input
+{
+    display: none;
+}
+
+.image_upload img
+{
+    width: 24px;
+    cursor: pointer;
+}
+.container{
+    height: 90%;
+}
+.table-responsive{
+    display: flex;
+    
+}
+
+#user_details{
+    height:90%;
+    width: 30%;
+}
+#user_model_details{
+    background-color: #FFF;
+    width: 70%;
+    height:90%;
+    margin-right: 5%;
+}
+.ui-dialog-title{
+    font-size: 24px;
+}
+
+</style>  
+<div class="container">
+   <br/>
+    <div class="table-responsive">
+    <div id="user_details"></div>
+    <div id="user_model_details"></div>
+   </div>
+</div>
 </body>
 </html>
