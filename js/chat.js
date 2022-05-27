@@ -128,14 +128,31 @@ $(document).on('click', '.send_chat', function(){
 $(document).ready(function(){
 setLoginFrame()
 fetch_user();
-var to_user_id = $("#user_details > table > tbody > tr:nth-child(2) > td:nth-child(2) > button").data('touserid');
-var to_user_name = $("#user_details > table > tbody > tr:nth-child(2) > td:nth-child(2) > button").data('tousername');
-make_chat_dialog_box(to_user_id, to_user_name);
+if(check_get()){
+  var chatwith=check_get();
+  make_chat_dialog_box(chatwith, chatwith);
+}
+else{
+  var to_user_id = $("#user_details > table > tbody > tr:nth-child(2) > td:nth-child(2) > button").data('touserid');
+  var to_user_name = $("#user_details > table > tbody > tr:nth-child(2) > td:nth-child(2) > button").data('tousername');
+  make_chat_dialog_box(to_user_id, to_user_name);
+}
+
 /*setInterval(function(){
   fetch_user();
   update_chat_history_data();
  }, 5000); */
 });
+
+function check_get(){
+  var getUrlString = location.href;
+  var url = new URL(getUrlString);
+  var chatwith=url.searchParams.get('chatwith');
+  if(chatwith){
+    return chatwith;
+  }
+  else{return false;}
+}
 
 function setLoginFrame(){
   var name = $( "#account:text" ),

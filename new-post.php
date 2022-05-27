@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/jquery-ui.css">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="./js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -26,11 +27,26 @@
 <body>
 
     <div class='logoutframe' style="display: none;">
+=======
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./js/new_post.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+
+<body>
+
+    <div class='logoutframe' style="display: none;">
+        <!-- <form id="form" action="./php/login.php" method="post"> -->
+>>>>>>> 4a0b6faa1f0ab5bf8b0a143129613367bf41123d
         <p class="validateTips">提示:是否要登出?</p>
         <div>
             <a href="index.php" onclick="delCookie('name'),delCookie('user_incession')">確認</a>
             <a onclick="$('.logoutframe').dialog('close')" style="cursor: pointer;">取消</a>
         </div>
+<<<<<<< HEAD
+=======
+        <!-- </form> -->
+>>>>>>> 4a0b6faa1f0ab5bf8b0a143129613367bf41123d
     </div>
     <?php include 'php/header_bar.php';?>
         <form action="" method="post" id='post-content' enctype="multipart/form-data">
@@ -45,10 +61,15 @@
                 <input id='img'type="file" name="img" onchange="readURL(this)" targetID="preview_img">
                 <img src="./uploads/default-image.jpg" alt="" id="preview_img">
             </button> 
+<<<<<<< HEAD
             <input type="text" name="price" id="price" placeholder="價格/1小時">
             <input type="text" name="place" id="place" placeholder="面交地點">
             <p>結束日期:<input type="text" class="accept_date" id="accept_date" placeholder="請選擇日期"></p><br>
             <p>可接受之時間:<input type="text" id="accept_time" placeholder="請選擇時間"></p><br>
+=======
+            <input type="text" name="price" id="price" placeholder="價格">
+            <input type="text" name="place" id="place" placeholder="面交地點">
+>>>>>>> 4a0b6faa1f0ab5bf8b0a143129613367bf41123d
             <a onclick="appendItem()" style="cursor: pointer;">發文</a>
             <a href='index.php' style="cursor: pointer;">取消</a>
         </form>

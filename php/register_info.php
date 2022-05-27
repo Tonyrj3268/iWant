@@ -1,6 +1,7 @@
 <?php
     $account=$_POST['account'];
     $password=$_POST['password'];
+    
     $email=$_POST['email'];
     $name=$_POST['name'];
     $dep=$_POST['department'];

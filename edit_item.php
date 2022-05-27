@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="./js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/0999d15b7c.js" crossorigin="anonymous"></script>
+    <script src="./js/edit_item.js"></script>
+    
+    
 </head>
 
 <body>
@@ -30,6 +32,7 @@
     <?php include 'php/header_bar.php';?>
     <?php
 
+        $id=$_POST['id'];
         $status=$_POST['status'];
         $topic=$_POST['topic'];
         $content=$_POST['content'];
@@ -44,6 +47,7 @@
             <label><input name="rent_borrow" type="radio" value="rent" />租 </label> 
             <label><input checked=true name="rent_borrow" type="radio" value="borrow" />借 </label> 
         </div>
+        <input type="hidden" name="id" id="id" value="'.$id.'">
         <input type="text" name="topic" id="topic" value="'.$topic.'">
         <textarea id="content" name="content" cols="30" rows="10" >'.$content.'</textarea>
         <p>商品實際圖片(選填)</p>
@@ -64,6 +68,7 @@
             <label><input checked=true name="rent_borrow" type="radio" value="rent" />租 </label> 
             <label><input name="rent_borrow" type="radio" value="borrow" />借 </label> 
         </div>
+        <input type="hidden" name="id" id="id" value="'.$id.'">
         <input type="text" name="topic" id="topic" value="'.$topic.'">
         <textarea id="content" name="content" cols="30" rows="10" >'.$content.'</textarea>
         <p>商品實際圖片(選填)</p>

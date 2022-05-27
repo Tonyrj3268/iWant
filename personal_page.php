@@ -27,6 +27,7 @@
     </div>
     <?php include 'php/header_bar.php';?>
     <div id='personal_content'></div>
+    <div id='personal_function_content'></div>
 
 </body>
 </html>

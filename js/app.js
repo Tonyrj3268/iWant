@@ -1,4 +1,3 @@
-
 function gotoregister(){
   window.location.href="./register.php";
 }
@@ -28,6 +27,18 @@ function sendAskToPoster(){
   }
 }
 
+function chat(user_id){
+  //是否要警告視窗
+  if(getCookie('name')==user_id){
+    window.location.href="./personal_page.php";
+  }
+  else{
+    url="./chat.php?chatwith=";
+    url+=user_id;
+    window.location.href=url;
+  }
+
+}
 
 function register_verify_account(){
   var tips='';
@@ -111,17 +122,10 @@ function login(){
     type: 'post',                   // post/get
     data: $('#form').serialize(),       // 輸入的資料
     error: function (xhr) {
-      console.log('fail1');
+      console.log('fail');
      },      // 錯誤後執行的函數
     success: function (response) {
-      var data=response;
-      if(data == "fail"){
-      
-      }
-      else{
-        data= JSON.parse(response);
-         console.log(data);
-      }
+      const data = JSON.parse(response);
       tips = data;
      }// 成功後要執行的函數
 })
@@ -155,7 +159,6 @@ function delCookie(name)//删除cookie
   }
 
 function setItemContainer(){
-    console.log("asd")
     $container = $('#item-container');
     $container.empty();
     //item div
@@ -168,28 +171,43 @@ function setItemContainer(){
 }
 
 function getItemList(){
-<<<<<<< HEAD
-  //var category= document.querySelector('input[name="item-category"]:checked').value
-  var category="rent";
-=======
->>>>>>> 17a6524857b812e010b84f2c440360e9498bc338
+  
+  //console.log(document.querySelector('input[name="item-category"]:checked').value);
   var result ="";
   $.ajax({
     async:       false,
     url: './php/collectItem.php',                        // url位置
     type: 'post',                   // post/get
-    data: {category: category},       // 輸入的資料
+    data: {category: document.querySelector('input[name="item-category"]:checked').value},       // 輸入的資料
     error: function (xhr) {
       console.log('fail');
      },      // 錯誤後執行的函數
     success: function (response) {
       result = response;
-      console.log(result);
+      //console.log(response);
      }// 成功後要執行的函數
 })
 return result;
 }
 
+
+function getEval(item_index){
+  var result ="";
+  $.ajax({
+    async:       false,
+    url: './php/get_evaluation.php',                        // url位置
+    type: 'post',                   // post/get
+    data: {stuff_id: item_index},       // 輸入的資料
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      result = response;
+      //console.log(response);
+     }// 成功後要執行的函數
+})
+return result;
+}
 function showItem(element){
   //console.log(element);
   var item_index = element.getAttribute("data-index");
@@ -201,10 +219,14 @@ function showItem(element){
   $( '.itemframe' ).attr('item-index',item_index);
   if(getCookie('name')==postfrom){
     var edit = ' <button type="submit">編輯</button><a onclick="$(\'.itemframe\').dialog(\'close\')" style="cursor: pointer;">取消</a>';
+    edit+="</br><hr></br><a>評價</a></br>"
+    edit+=getEval(item_index);
     $('.item-content').html(result+edit) ;
   }
   else{
     var edit = '<a onclick="sendAskToPoster()" style="cursor: pointer;">發送請求</a><a onclick="$(\'.itemframe\').dialog(\'close\')" style="cursor: pointer;">取消</a>';
+    edit+="</br><hr></br><a>評價</a></br>"
+    edit+=getEval(item_index);
     $('.item-content').html(result+edit) ;
   }
   $(".datepicker").datepicker({
@@ -261,6 +283,53 @@ function goAppendItem(){
   }
 }
 
+function appendItem(){
+  var formData = new FormData();
+  let topic = document.getElementById('topic').value;
+  let content = document.getElementById('content').value;
+  let img = document.getElementById('post-content')[5].files;
+  let price = document.getElementById('price').value;
+  let place = document.getElementById('place').value;
+  let rent_borrow = null;
+  if(document.querySelector('input[name="rent_borrow"]:checked') == null){
+    updateTips('請選擇租或借');
+    return;
+  }
+  else{
+    rent_borrow = document.querySelector('input[name="rent_borrow"]:checked').value;
+  }
+  formData.append('topic',topic);
+  formData.append('content',content);
+  formData.append('price',price);
+  formData.append('place',place);
+  formData.append('rent_borrow',rent_borrow);
+  if(img !=null){
+    console.log('have pic');
+    formData.append('img',img[0]);
+  }
+  
+  $.ajax({
+    async:false,
+    url: './php/postItem.php',                        // url位置
+    type: 'post',                   // post/get
+    data: formData,
+    processData: false, // 告诉jQuery不要去处理发送的数据
+    contentType: false, // 告诉jQuery不要去设置Content-Type请求头       // 輸入的資料
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      result = response;
+      if(result == "success"){
+        window.location.href='./index.php';
+      }
+      else {
+        console.log(result);
+        updateTips(result)
+      }
+     }// 成功後要執行的函數
+})
+}
 
 function editItem(){
   var formData = new FormData();
@@ -289,8 +358,8 @@ function editItem(){
   
   $.ajax({
     async:false,
-    url: './php/edit_item.php',                        // url位置
-    type: 'post',                   // post/get
+    url: './php/edit_item.php',
+    type: 'post',                 // post/get
     data: formData,
     processData: false, // 告诉jQuery不要去处理发送的数据
     contentType: false, // 告诉jQuery不要去设置Content-Type请求头       // 輸入的資料
@@ -329,8 +398,9 @@ function setLoginFrame(){
   password = $( "#password:text" ),
   allFields = $( [] ).add( name ).add( password )
   
+  
 
-  var dia = $( '.loginframe' ).dialog({
+  $( '.loginframe' ).dialog({
     autoOpen: false,
     height: 300,
     width: 350,
@@ -339,16 +409,12 @@ function setLoginFrame(){
       "登入": function() {
         allFields.removeClass( "ui-state-error" );
         var result = login();
-        
         var val = name.val()
-        if(result!='fail'){
-          console.log(result);
-          if(result.res.trim() == "success"){
-            $( '.loginframe' ).dialog("close");
-            window.location.href='./home.php';
-            setCookie("name",val);
-            setCookie("user_incession",result.incession);
-          }
+        if(result.res.trim() == "success"){
+          $( '.loginframe' ).dialog("close");
+          window.location.href='./home.php';
+          setCookie("name",val);
+          setCookie("user_incession",result.incession);
         }
         else {
           updateTips(result);
@@ -435,8 +501,7 @@ function setLoginFrame(){
       'width': 'hide' 
      }, 1000); 
     }); 
-   });
-   
+   }); 
 
 }
 
@@ -460,9 +525,8 @@ function readURL(input){
 
 }
 
-$(document).ready(function() {
-  //
+$(function(){ 
+  
+ setItemContainer();
   setLoginFrame();
-  setItemContainer();
-	})
- 
+ })

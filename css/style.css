@@ -6,12 +6,20 @@
 
 .ui-dialog {
 	position: absolute;
-	top: 0;
-	left: 0;
+    width:900px!important;
+    height: 700px !important;
 	padding: 0em;
 	outline: 0;
-    background-color: #498EAF;
+    background-color: rgb(83, 145, 124);
     
+}
+
+.itemframe{
+    position: absolute;
+    width:900px!important;
+    height: 700px !important;
+    display:flex;
+    justify-content:center;
 }
 
 /*.ui-dialog-titlebar { display: none; }*/
@@ -29,11 +37,12 @@ html,body{
 .loginframe{
     background-color: #498EAF;
     display: flex;
-    width: 200px;
-    height: 200px;
+    width: 900px !important;
+    height: 500px !important;
     text-align: center;
     align-items: center;
     justify-content: center;
+
 }
 
 .loginframe > *{
@@ -179,6 +188,15 @@ html,body{
     height: 150px;
 }
 
+#user_name{
+    cursor: pointer;
+}
+
+#user_name:hover{
+    color:#1E88C7;
+    text-decoration: underline;
+}
+
 #post-content{
     margin-top: 100px;
     display: flex;
@@ -238,3 +256,206 @@ html,body{
     padding-left: 12px;
   }*/
 
+#personal_page_intro_card{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 17px;
+
+position: absolute;
+width: 463px;
+height: 128px;
+left: 150px;
+top: 71px;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#personal_page_functions{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+position: absolute;
+width: 463px;
+height: 346px;
+left: 150px;
+top: 199px;
+
+background: #FFFFFF;
+}
+
+#personal_page_function_1{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 432px;
+height: 95px;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+#personal_page_function_2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    
+    width: 443px;
+    height: 95px;
+    
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+#personal_page_function_3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    
+    width: 443px;
+    height: 95px;
+    
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.personal_page_title{
+    position: absolute;
+width: 462px;
+height: 58px;
+left: 633px;
+top: 79px;
+
+font-family: 'Noto Sans SC';
+font-style: normal;
+font-weight: 400;
+font-size: 58px;
+line-height: 84px;
+display: flex;
+align-items: center;
+
+color: #0A0A0A;
+}
+
+.personal_page_hr{
+    position: absolute;
+width: 645px;
+height: 0px;
+left: 633px;
+top: 193px;
+
+border: 2px solid #717171;
+transform: rotate(-0.12deg);
+}
+
+#personal_f1_container{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 23px;
+
+position: absolute;
+width: 745px;
+height: auto;
+left: 570px;
+top: 217px;
+/*overflow-y: scroll;*/
+
+}
+
+#personal_f2_container{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 23px;
+
+position: absolute;
+width: 745px;
+height: 500px;
+left: 570px;
+top: 217px;
+overflow-y: scroll;
+
+}
+
+.personal_f1_item{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 15px;
+
+width: 672px;
+height: 274px;
+
+/* Inside auto layout 
+flex: none;
+order: 0;
+flex-grow: 0;*/
+}
+
+.personal_f2_item{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 15px;
+
+width: 672px;
+height: 274px;
+
+/* Inside auto layout 
+flex: none;
+order: 0;
+flex-grow: 0;*/
+}
+
+.personal_f1_item_intro{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+
+width: 363px;
+height: 224px;
+}
+
+.personal_f2_item_intro{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    width: 363px;
+    height: 224px;
+    }

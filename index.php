@@ -1,4 +1,4 @@
-<?php include('php/incession.php');?>
+<?php include('./php/incession.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/0999d15b7c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/jquery-ui.css">
+
     
 </head>
 
@@ -59,6 +61,9 @@
     <div class="cover"></div>
     <div id='serach_filter'>
         
+            
+        <input type="text" name="" id="" placeholder="輸入一或多於一個字元來搜尋...">
+        <button>search</button><br>
         <select name="" id="">
             <option value="">請選擇想要的類型</option>
         </select>

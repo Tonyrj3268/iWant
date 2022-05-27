@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="./js/app.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/0999d15b7c.js" crossorigin="anonymous"></script>
+    <script src="./js/register.js"></script>
+    
 </head>
 <body>
 
@@ -22,7 +24,7 @@
         <p class="validateTips">提示</p>
         <div>
             帳號: <input id='account' name="account" type="text" placeholder="請輸入帳號"><br>
-            密碼: <input id='password' name="password" type="password" placeholder="請輸入密碼"><br>
+            密碼: <input id='password' name="password" type="password" placeholder="請輸入密碼" autocomplete="off"><br>
             <a href="register.php">還沒有帳號嗎?</a>
         </div>
 
@@ -56,8 +58,8 @@
     <form id="form-register" action="##" method="post">
         <div class="share_Panel" id="account_panel">
             請輸入帳號:<input id='reg_account' name="account" type="text"><br>
-            請輸入密碼:<input id='reg_password' name="password" type="password"><br>
-            請再輸入一次密碼:<input id='reg_repassword' name="password" type="password"><br>
+            請輸入密碼:<input id='reg_password' name="password" type="password" autocomplete="off"><br>
+            請再輸入一次密碼:<input id='reg_repassword' name="password" type="password" autocomplete="off"><br>
             <button class="nextTab"  data-panel-open="#verify_panel" type="button">下一頁</button>
             <a href="index.php">返回首頁</a>
         </div>

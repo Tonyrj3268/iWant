@@ -44,7 +44,7 @@
             $tmp_name = $_FILES['img']['tmp_name'];
             $error = $_FILES['img']['error'];
             if($error === 0){
-                if($img_size > 1000000){
+                if($img_size > 10000000){
                     echo 'sorry, your file is too large';
                 }
                 else{

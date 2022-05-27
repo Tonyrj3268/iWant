@@ -3,6 +3,7 @@
     if(isset($_POST['topic']) && isset($_POST['content'])){
         require_once 'connect.php';
    
+        $id=$_POST['id'];
         $topic=$_POST['topic'];
         $content=$_POST['content'];
         $user_account=$_COOKIE['name'];
@@ -26,7 +27,7 @@
         }
 
         else if(empty($_FILES['img']['name'])){
-            $query = "UPDATE stuff_info SET stuff_status = '$rent_borrow', stuff_topic = '$topic', stuff_content = '$content', stuff_price = '$price', stuff_place = '$place'WHERE user_account = '$user_account'";
+            $query = "UPDATE stuff_info SET stuff_status = '$rent_borrow', stuff_topic = '$topic', stuff_content = '$content', stuff_price = '$price', stuff_place = '$place'WHERE user_account = '$user_account' and stuff_ID='$id'";
             $result = mysqli_query($conn,$query);
             if ($result){
                 echo 'success';
@@ -63,7 +64,7 @@
         
                         move_uploaded_file($tmp_name, $img_upload_path);
         
-                        $query = "UPDATE stuff_info SET stuff_status = '$rent_borrow', stuff_img_name = '$new_img_name', stuff_topic = '$topic', stuff_content = '$content', stuff_price = '$price', stuff_place = '$place'WHERE user_account = '$user_account'";
+                        $query = "UPDATE stuff_info SET stuff_status = '$rent_borrow', stuff_img_name = '$new_img_name', stuff_topic = '$topic', stuff_content = '$content', stuff_price = '$price', stuff_place = '$place'WHERE user_account = '$user_account' and stuff_ID='$id'";
                         $result = mysqli_query($conn,$query);
                         if ($result){
                             $em = $result;
