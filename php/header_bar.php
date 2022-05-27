@@ -1,12 +1,17 @@
 <?php 
 echo '<div id="header-bar">
-    <a href="index.php">首頁</a>
-    <a onclick="goSysNotify()">通知</a>
-    <a onclick="goMsg()">訊息</a>
-    <a onclick="goPersonalPage()">個人頁面</a>
-    <a id="logout"
-    onclick="$(\'.logoutframe\').dialog(\'open\');">登出
-    </a>
+    <div><a href="index.php"><img class="logo", src="https://upload.cc/i1/2022/05/26/eKBEus.png", onclick=""></a></div>
+    <div class="search">
+        <input class="search-bar" type="text" name="search" id="search" placeholder="search">
+        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="btn">
+    <a class="notice" onclick="goSysNotify()"><i class="fa-solid fa-bell"></i></a>
+    <a class="message" onclick="goMsg()"><i class="fa-solid fa-message"></i></a>
+    <a class="personal" onclick="goPersonalPage()"><i class="fa-solid fa-user"></i></a>
+    <a class="logout" id="logout" onclick="$(\'.logoutframe\').dialog(\'open\');"><i class="fa-solid fa-arrow-right-from-bracket"></i>Log Out
+    </a> 
+    </div>
     </div>
     <div class="cover"></div>'
 ?>

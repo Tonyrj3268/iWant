@@ -10,7 +10,7 @@
 	left: 0;
 	padding: 0em;
 	outline: 0;
-    background-color: rgb(83, 145, 124);
+    background-color: #498EAF;
     
 }
 
@@ -18,14 +18,14 @@
 
 .validateTips { border: 1px solid transparent; padding: 0.3em; }
 body{
-    background-color: bisque;
+    background-color: #f0f2f5;
     display: flex;
     flex-direction: column;
 
 }
 
 .loginframe{
-    background-color: rgb(83, 145, 124);
+    background-color: #498EAF;
     display: flex;
     width: 200px;
     height: 200px;
@@ -38,11 +38,89 @@ body{
     color: #ffffff;
 }
 
+.search{
+    width: 500px;
+    float: left; 
+    padding-left: 150px;
+    padding-top: 10px;
+    display: flex;
+    margin-left: 10%;
+}
+
+.logo{
+    position: absolute;
+    width: 150px;
+    height: 45px;
+}
+.search-btn{
+    width: 36px;
+    height: 32px;
+    background-color: #3D1101;
+    color:#efe9e7;
+    outline:none;
+    border: 2px solid #3D1101;
+    cursor: pointer; 
+    position: absolute;
+    margin-top: 4px;
+    left: 45%; 
+    border-radius: 5px;
+   }
+.search-bar {
+    width: 500px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 3px solid #3d1101;
+    background-color: #f0f2f5;
+  }
+.search-btn2{
+    width: 36px;
+    height: 32px;
+    background-color: #3D1101;
+    color:#efe9e7;
+    outline:none;
+    border: 2px solid #3D1101;
+    cursor: pointer; 
+    position: absolute;
+    margin-top: 4px;
+    left: 50%; 
+    border-radius: 5px;
+   }
+.search-bar2{
+    width: 500px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 3px solid #3d1101;
+    background-color: #f0f2f5;
+  }
+.btn{
+    width: 300px;
+    display: flex;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-left: 350px;
+    margin-top: 5px;
+}
+.notice{
+    margin-right: 20%;
+    width: 10px;
+    height: 10px;
+}
+.message{
+    margin-right: 20%;
+}
+.personal{
+    margin-right: 20%;
+}
+.login{
+}
 #header-bar{
-    background-color: aquamarine;
+    background-color: #498EAF;
     height: 50px;
     position: fixed;
     width: 100%;
+    display: flex;
 }
 
 #header-bar button{
@@ -52,7 +130,7 @@ body{
 }
 
 .cover{
-    background-color: aquamarine;
+    background-color: #498EAF;
     height: 50px;
     width: 100%;
 }

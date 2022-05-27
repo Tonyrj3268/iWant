@@ -1,10 +1,10 @@
 <?php
 $servername = "localhost";
-$username = "109306066";
-$password = "109306066";
+$db_username = "root";
+$db_password = "dfg48816";
 $dbname = "db-test";
 // 创建连接
-$conn = new mysqli($servername, $username, $password,$dbname);
+$conn = new mysqli($servername, $db_username, $db_password,$dbname);
  
 // 检测连接
 if ($conn->connect_error) {

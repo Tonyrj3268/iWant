@@ -111,10 +111,17 @@ function login(){
     type: 'post',                   // post/get
     data: $('#form').serialize(),       // 輸入的資料
     error: function (xhr) {
-      console.log('fail');
+      console.log('fail1');
      },      // 錯誤後執行的函數
     success: function (response) {
-      const data = JSON.parse(response);
+      var data=response;
+      if(data == "fail"){
+      
+      }
+      else{
+        data= JSON.parse(response);
+         console.log(data);
+      }
       tips = data;
      }// 成功後要執行的函數
 })
@@ -148,6 +155,7 @@ function delCookie(name)//删除cookie
   }
 
 function setItemContainer(){
+    console.log("asd")
     $container = $('#item-container');
     $container.empty();
     //item div
@@ -160,19 +168,20 @@ function setItemContainer(){
 }
 
 function getItemList(){
-  console.log(document.querySelector('input[name="item-category"]:checked').value);
+  //var category= document.querySelector('input[name="item-category"]:checked').value
+  var category="rent";
   var result ="";
   $.ajax({
     async:       false,
     url: './php/collectItem.php',                        // url位置
     type: 'post',                   // post/get
-    data: {category: document.querySelector('input[name="item-category"]:checked').value},       // 輸入的資料
+    data: {category: category},       // 輸入的資料
     error: function (xhr) {
       console.log('fail');
      },      // 錯誤後執行的函數
     success: function (response) {
       result = response;
-      //console.log(response);
+      console.log(result);
      }// 成功後要執行的函數
 })
 return result;
@@ -361,9 +370,8 @@ function setLoginFrame(){
   password = $( "#password:text" ),
   allFields = $( [] ).add( name ).add( password )
   
-  
 
-  $( '.loginframe' ).dialog({
+  var dia = $( '.loginframe' ).dialog({
     autoOpen: false,
     height: 300,
     width: 350,
@@ -372,12 +380,16 @@ function setLoginFrame(){
       "登入": function() {
         allFields.removeClass( "ui-state-error" );
         var result = login();
+        
         var val = name.val()
-        if(result.res.trim() == "success"){
-          $( '.loginframe' ).dialog("close");
-          window.location.href='./home.php';
-          setCookie("name",val);
-          setCookie("user_incession",result.incession);
+        if(result!='fail'){
+          console.log(result);
+          if(result.res.trim() == "success"){
+            $( '.loginframe' ).dialog("close");
+            window.location.href='./home.php';
+            setCookie("name",val);
+            setCookie("user_incession",result.incession);
+          }
         }
         else {
           updateTips(result);
@@ -488,8 +500,9 @@ function readURL(input){
 
 }
 
-$(function(){ 
-  
-	setItemContainer();
+$(document).ready(function() {
+  //
   setLoginFrame();
+  setItemContainer();
 	})
+ 
