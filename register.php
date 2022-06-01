@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="./js/register.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/0999d15b7c.js" crossorigin="anonymous"></script>
+    <script src="./js/register.js"></script>
+    
 </head>
 <body>
 
@@ -30,12 +33,25 @@
         <?php } ?>
         </form>
     </div>
-    <div id="header-bar">
+    <!-- <div id="header-bar">
         <a href="index.php">首頁</a>
         <a onclick="goSysNotify()">通知</a>
         <a onclick="goMsg()">訊息</a>
         <a onclick="goPersonalPage()">個人頁面</a>
         <a id="login" onclick="$('.loginframe').dialog('open');">登入/註冊</a>
+    </div> -->
+    <div id="header-bar">
+            <a href="./index.php", style="width: 100px; height:45px;"><img class="logo", src="https://upload.cc/i1/2022/05/26/eKBEus.png", onclick=""></a>
+            <div class="search">
+                 <input class="search-bar" type="text" name="search" id="search" placeholder="search">
+                 <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="btn">
+                <div class="notice"><a onclick="goSysNotify()"><i class="fa-solid fa-bell"></i></a></div>
+                <div class="message"><a onclick="goMsg()"><i class="fa-solid fa-message"></i></a></div>
+                <div class="personal"><a onclick="goPersonalPage()"><i class="fa-solid fa-user"></i></a></div>
+                <div class="login"><a id="login" onclick="$('.loginframe').dialog('open');"><i class="fa-solid fa-right-to-bracket",style="padding-right=5%"></i>Login</a></div>
+            </div>
     </div>
     <div class="cover"></div>
     

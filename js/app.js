@@ -1,4 +1,3 @@
-
 function gotoregister(){
   window.location.href="./register.php";
 }
@@ -361,8 +360,8 @@ function editItem(){
   
   $.ajax({
     async:false,
-    url: './php/edit_item.php',                        // url位置
-    type: 'post',                   // post/get
+    url: './php/edit_item.php',
+    type: 'post',                 // post/get
     data: formData,
     processData: false, // 告诉jQuery不要去处理发送的数据
     contentType: false, // 告诉jQuery不要去设置Content-Type请求头       // 輸入的資料
@@ -579,6 +578,6 @@ function readURL(input){
 
 $(function(){ 
   
-	setItemContainer();
+ setItemContainer();
   setLoginFrame();
-	})
+ })

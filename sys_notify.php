@@ -9,6 +9,9 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/jquery-ui.css">
+ <script src="https://kit.fontawesome.com/0999d15b7c.js" crossorigin="anonymous"></script>
+
+
     <!-- <script src="./js/jquery-3.6.0.js"></script>
     <script src="./js/app.js"></script>
     <script src="./js/jquery-ui.js"></script> -->
