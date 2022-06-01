@@ -3,7 +3,7 @@
 
 require_once 'connect.php';
 //取得通知ID和內容
-$query = "SELECT sys_notify_index,sys_msg,read_status,notify_time FROM `db-test`.sys_notify where to_user_id=".$_COOKIE['name']." order by notify_time desc;";
+$query = "SELECT sys_notify_index,sys_title,sys_msg,read_status,notify_time FROM `db-test`.sys_notify where to_user_id=".$_COOKIE['name']." order by notify_time desc;";
 $result = mysqli_query($conn,$query);
 
 
@@ -19,7 +19,7 @@ foreach($result as $row)
 {
     $output .= '
             <tr class="notify" notify_id="'.$row['sys_notify_index'].'" >
-            <td style="'.count_unseen_notify($row['read_status']).'">'.$row['sys_msg'].'</td>
+            <td style="'.count_unseen_notify($row['read_status']).'">'.$row['sys_title'].'</td>
             <td>'.$row['notify_time'].'</td>
             </tr>
             ';

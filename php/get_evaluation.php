@@ -10,7 +10,7 @@ foreach($result as $row)
 {
     $rating='';
     for($i=0;$i<$row["rating"];$i++){
-        $rating.="*";
+        $rating.="⭐";
     }
     $output .= '
             <div>

@@ -36,6 +36,12 @@
         </div>
         </form>
     </div>
+    <div class='askframe' style="display: none;" title="是否要租借此商品?"> 
+        <div>
+           <a href="">點擊確認將為您自動傳送通知給賣家並跳至訊息頁面!</a>
+        </div>
+        </form>
+    </div>
     <?php include 'php/header_bar.php';?>
     <div id='serach_filter'>
         <input type="text" name="" id="" placeholder="輸入一或多於一個字元來搜尋...">

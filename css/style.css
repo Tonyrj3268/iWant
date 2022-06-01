@@ -6,8 +6,8 @@
 
 .ui-dialog {
 	position: absolute;
-    width:900px!important;
-    height: 700px !important;
+    /*width:900px!important;
+    height: 700px !important;*/
 	padding: 0em;
 	outline: 0;
     background-color: rgb(83, 145, 124);
@@ -330,6 +330,22 @@ overflow-y: scroll;
 
 }
 
+#personal_f3_container{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 23px;
+
+position: absolute;
+width: 745px;
+height: auto;
+left: 570px;
+top: 217px;
+/*overflow-y: scroll;*/
+
+}
+
 .personal_f1_item{
     display: flex;
 flex-direction: row;
@@ -364,6 +380,23 @@ order: 0;
 flex-grow: 0;*/
 }
 
+.personal_f3_item{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 15px;
+
+width: 672px;
+height: 274px;
+
+/* Inside auto layout 
+flex: none;
+order: 0;
+flex-grow: 0;*/
+}
+
 .personal_f1_item_intro{
 display: flex;
 flex-direction: column;
@@ -378,6 +411,15 @@ height: 224px;
     flex-direction: column;
     align-items: flex-start;
     
+    width: 363px;
+    height: 224px;
+    }
+
+.personal_f3_item_intro{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+        
     width: 363px;
     height: 224px;
     }

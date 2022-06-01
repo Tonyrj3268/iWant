@@ -138,3 +138,61 @@ function setLoginFrame(){
     })
     $("#personal_function_content").html(result);
   }
+
+  function update_info(){
+    var formData = new FormData();
+    let name = document.getElementById('personal_f3_personal_name').value;
+    let img = document.getElementById('personal_f3_form')[1].files;
+    let dep = document.getElementById('personal_f3_personal_dep').value;
+    let others = document.getElementById('personal_f3_personal_others').value;
+    formData.append('name',name);
+    formData.append('dep',dep);
+    formData.append('others',others);
+    if(img !=null){
+      console.log('have pic');
+      formData.append('img',img[0]);
+    }
+    
+    $.ajax({
+      async:false,
+      url: './php/update_user_info.php',                        // url位置
+      type: 'post',                   // post/get
+      data: formData,
+      processData: false, // 告诉jQuery不要去处理发送的数据
+      contentType: false, // 告诉jQuery不要去设置Content-Type请求头       // 輸入的資料
+      error: function (xhr) {
+        console.log('fail');
+       },      // 錯誤後執行的函數
+      success: function (response) {
+        result = response;
+        if(result == "success"){
+          //get_perosinal_function_3();
+          window.location.href='./personal_page.php';
+        }
+        else {
+          console.log(result);
+          updateTips(result)
+        }
+       }// 成功後要執行的函數
+  })
+  }
+
+  function readURL(input){
+
+    if(input.files && input.files[0]){
+  
+      var imageTagID = input.getAttribute("targetID");
+  
+      var reader = new FileReader();
+  
+      reader.onload = function (e) {
+         var img = document.getElementById(imageTagID);
+         img.setAttribute("src", e.target.result);
+  
+      }
+  
+      reader.readAsDataURL(input.files[0]);
+  
+    }
+  
+  }

@@ -53,7 +53,7 @@
                         $rating=$rating/$i;
                         $star='';
                         for($i=0;$i<$rating;$i++){
-                            $star.="*";
+                            $star.="⭐";
                         }
 
                     return $star;

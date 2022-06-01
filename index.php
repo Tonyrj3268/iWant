@@ -1,4 +1,4 @@
-<?php include('./php/incession.php');?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,8 +40,6 @@
         <form id="upfile" action="./php/pic_store.php" method="post" enctype="multipart/form-data">
         <div>
             <p class="item-content"></p>
-            <!--<input type="file" id='pic' name="pic" ><br>
-            <a onclick="uploadpic()" style="cursor: pointer;">插入圖片</a>-->
             
         </div>
         </form>

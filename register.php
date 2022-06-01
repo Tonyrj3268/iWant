@@ -50,7 +50,7 @@
         <div class="sharePanel" id="verify_panel"> 
             <div class="shareFade"> 
              <div>
-                請輸入電子信箱:<input id='reg_email' name="email" type="text">
+                請輸入電子信箱:<input id='reg_email' name="email" type="email" required>
                 <button>點擊寄送驗證碼</button><br>
                 請輸入驗證碼:<input name="" type="text"><br>
                 <button class="nextTab" data-panel-open="#info_panel" type="button">下一頁</button>
@@ -61,10 +61,15 @@
        <div class="sharePanel" id="info_panel"> 
             <div class="shareFade"> 
              <div>
-                請輸入稱呼:<input id='reg_name' name="name" type="text"><br>
+                 照片(選填)
+                <button style="width: 100px; height: 100px" id="upload">
+                    <input id="reg_img" type="file" name="img" onchange="readURL(this)" targetID="preview_img">
+                    <img src="./uploads/default-image.jpg" alt="" id="preview_img">
+                </button></br>
+                請輸入稱呼:<input id='reg_name' name="name" type="text" required><br>
                 請輸入系級:<input id='reg_dep' name="department" type="text"><br>
-                請輸入學號:<input id='reg_stu_ID' name="stu_ID" type="text"><br>
-                是否有額外聯絡方式:<input id='reg_others' name="" type="text"><br>
+                請輸入學號:<input id='reg_stu_ID' name="stu_ID" type="text" required><br>
+                是否有額外聯絡方式:<input id='reg_others' name="others" type="text"><br>
                 <button class="nextTab" data-panel-open="#info_panel" type="button">註冊</button>
                 <a class="shareClose" data-close-panel="#info_panel">返回上頁</a>
             </div>

@@ -19,9 +19,11 @@ function goMsg(){
     $( '.loginframe' ).dialog('open');
   }
 }
-function sendAskToPoster(){
+function sendAskToPoster(to_user_id,stuff_id){
   if(getCookie('name')){
-    window.location.href="./chat.php";
+    $( '.askframe' ).dialog('open');
+    $( '.askframe' ).attr('to_user_id',to_user_id);
+    $( '.askframe' ).attr('stuff_id',stuff_id);
   }
   else{
     $( '.loginframe' ).dialog('open');
@@ -225,7 +227,7 @@ function showItem(element){
     $('.item-content').html(result+edit) ;
   }
   else{
-    var edit = '<a onclick="sendAskToPoster()" style="cursor: pointer;">發送請求</a><a onclick="$(\'.itemframe\').dialog(\'close\')" style="cursor: pointer;">取消</a>';
+    var edit = '<a onclick="sendAskToPoster('+postfrom+','+item_index+')" style="cursor: pointer;">發送請求</a><a onclick="$(\'.itemframe\').dialog(\'close\')" style="cursor: pointer;">取消</a>';
     edit+="</br><hr></br><a>評價</a></br>"
     edit+=getEval(item_index);
     $('.item-content').html(result+edit) ;
@@ -370,7 +372,7 @@ function editItem(){
     success: function (response) {
       result = response;
       if(result == "success"){
-        window.location.href='./index.php';
+        window.location.href='./personal_page.php';
       }
       else {
         console.log(result);
@@ -394,6 +396,34 @@ function updateTips( t ) {
   }, 5000 );
 }
 
+function send_notify(to_user_id,stuff_id,case_id){
+
+  switch(case_id){
+    case 1:
+      console.log("租商品通知");
+      $.ajax({
+        async:false,
+        url: './php/rent_stuff_notify.php',                        // url位置
+        type: 'post',                   // post/get
+        data: {to_user_id:to_user_id,stuff_id:stuff_id},
+        error: function (xhr) {
+          console.log('fail');
+         },      // 錯誤後執行的函數
+        success: function (response) {
+          result = response;
+          if(result == "success"){
+            chat(to_user_id);
+          }
+          else {
+            console.log(result);
+            updateTips(result)
+          }
+         }// 成功後要執行的函數
+    })
+  }
+
+}
+
 function setLoginFrame(){
   var name = $( "#account:text" ),
   password = $( "#password:text" ),
@@ -403,8 +433,8 @@ function setLoginFrame(){
 
   $( '.loginframe' ).dialog({
     autoOpen: false,
-    height: 300,
-    width: 350,
+    height: 700,
+    width: 900,
     modal: true,
     buttons: {
       "登入": function() {
@@ -442,9 +472,30 @@ function setLoginFrame(){
 
   $( '.itemframe' ).dialog({
     autoOpen: false,
+    height: 700,
+    width: 900,
+    modal: true,
+    close: function() {
+      allFields.val( "" ).removeClass( "ui-state-error" );
+    }
+  });
+
+  $( '.askframe' ).dialog({
+    autoOpen: false,
     height: 300,
     width: 350,
     modal: true,
+    buttons: {
+      "確認": function() {
+        allFields.removeClass( "ui-state-error" );
+        to_user_id=$( '.askframe' ).attr('to_user_id');
+        stuff_id=$( '.askframe' ).attr('stuff_id');
+        send_notify(to_user_id,stuff_id,1);
+      },
+      "取消": function() {
+        $( this ).dialog( "close" );
+      }
+    },
     close: function() {
       allFields.val( "" ).removeClass( "ui-state-error" );
     }

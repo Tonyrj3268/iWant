@@ -71,12 +71,28 @@ function gotoregister(){
   
   function register(){
     var tips='';
-    console.log($(reg_repassword).val());
+    console.log(document.getElementById('reg_img').files[0]);
+    let $img = document.getElementById('reg_img').files[0];
+    var formData = new FormData();
+    formData.append('account',$(reg_account).val());
+    formData.append('password',$(reg_password).val());
+    formData.append('repassword',$(reg_repassword).val());
+    formData.append('email',$(reg_email).val());
+    formData.append('name',$(reg_name).val());
+    formData.append('department',$(reg_dep).val());
+    formData.append('stu_ID',$(reg_stu_ID).val());
+    formData.append('others',$(reg_others).val());
+    
+    if($img !=null){
+      formData.append('img',$img);
+    }
     $.ajax({
       async:       false,
       url: './php/register_info.php',                        // url位置
       type: 'post',                   // post/get
-      data: {account: $(reg_account).val(),password:$(reg_password).val(),repassword:$(reg_repassword).val(),email: $(reg_email).val(),name: $(reg_name).val(), department: $(reg_dep).val(), stu_ID: $(reg_stu_ID).val()},       // 輸入的資料    // 錯誤後執行的函數
+      data: formData,
+      processData: false, // 告诉jQuery不要去处理发送的数据
+      contentType: false,
       success: function (response) {
         tips = response;
        }// 成功後要執行的函數

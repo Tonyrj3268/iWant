@@ -5,10 +5,14 @@ if(isset($_POST['name'])){
 
     require_once 'connect.php';
 
-    $query = "SELECT user_name,user_dep, user_stu_ID, user_email FROM user_info where user_account ='$name';";
+    $query = "SELECT user_name,user_dep, user_stu_ID, user_email, user_img_name FROM user_info where user_account ='$name';";
     $result = mysqli_query($conn,$query);
     if(mysqli_num_rows($result)>0){
         $row = mysqli_fetch_row($result);
+        $pic='uploads/default-image.jpg';
+        if($row[4]!=null){
+            $pic='uploads/'.$row[4];
+        }
         /*echo '<img src="uploads/default-image.jpg" alt="" style="width: 100px ; height: 100px;">
                 <a>稱呼:</a><a id=\'personal_name\'>'.$row[0] .'</a>
                 <a>系級:</a><a href="">'.$row[1] .'</a>
@@ -17,7 +21,7 @@ if(isset($_POST['name'])){
                 <a>租借紀錄:</a><a href=""></a>';*/
         echo '<div id="personal_page_intro_card">
                 <div>
-                    <img src="uploads/default-image.jpg" alt="" style="width: 100px ; height: 100px;">
+                    <img src="'.$pic.'"style="width: 100px ; height: 100px;">
                 </div>
                 <div>
                     <a id="personal_name">'.$row[0] .'</a></br>
