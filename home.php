@@ -45,10 +45,14 @@
     </div>
     <?php include 'php/header_bar.php';?>
     <div id='serach_filter'>
-        <input type="text" name="" id="" placeholder="輸入一或多於一個字元來搜尋...">
-        <button>search</button><br>
-        <select name="" id="">
-            <option value="">請選擇想要的類型</option>
+        <select id="change_category" onchange="change_category()">
+                <option>請選擇商品分類</option>
+                <option>原文書</option>
+                <option>計算機</option>
+                <option>文具</option>
+                <option>衣服</option>
+                <option>居家用品</option>
+                <option>其他</option>
         </select>
     </div>
     <div>
