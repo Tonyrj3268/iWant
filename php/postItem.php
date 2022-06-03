@@ -8,6 +8,7 @@
         $user_account=$_COOKIE['name'];
         $price=$_POST['price'];
         $place=$_POST['place'];
+        $category=$_POST['category'];
         $rent_borrow=$_POST['rent_borrow'];
         if(empty($topic)){
             echo 'topic is required';
@@ -26,7 +27,7 @@
         }
 
         else if(empty($_FILES['img']['name'])){
-            $query = "insert into stuff_info(stuff_status, stuff_topic, stuff_content, stuff_price, stuff_place, user_account) values('$rent_borrow','$topic','$content','$price','$place','$user_account')";
+            $query = "insert into stuff_info(stuff_status, stuff_topic, stuff_content, stuff_price, stuff_place, user_account, stuff_category) values('$rent_borrow','$topic','$content','$price','$place','$user_account',$category)";
             $result = mysqli_query($conn,$query);
             if ($result){
                 echo 'success';
@@ -63,7 +64,7 @@
         
                         move_uploaded_file($tmp_name, $img_upload_path);
         
-                        $query = "insert into stuff_info(stuff_status, stuff_topic, stuff_content, stuff_img_name, stuff_price, stuff_place, user_account) values('$rent_borrow','$topic','$content','$new_img_name','$price','$place','$user_account')";
+                        $query = "insert into stuff_info(stuff_status, stuff_topic, stuff_content, stuff_img_name, stuff_price, stuff_place, user_account,stuff_category) values('$rent_borrow','$topic','$content','$new_img_name','$price','$place','$user_account',$category)";
                         $result = mysqli_query($conn,$query);
                         if ($result){
                             $em = $result;

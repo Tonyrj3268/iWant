@@ -10,6 +10,7 @@
     else{
         $query = "select * from stuff_info Where stuff_status='$status' and stuff_category=$category ORDER BY stuff_ID desc";
     }
+    
             $result = mysqli_query($conn,$query);
             if ($result){
                 if (mysqli_num_rows($result)>=0) {

@@ -10,25 +10,17 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/jquery-ui.css">
     <link rel="stylesheet" href="./css/jquery.datetimepicker.css">
-    <script src="./js/jquery-3.6.0.js"></script>
-    <script src="./js/new-post.js"></script>
-    <script src="./js/jquery-ui.js"></script>
-    <script src="./js/jquery.datetimepicker.full.js"></script>
-</head>
-<body>
-
-    <div class='logoutframe' style="display: none;">
-=======
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="./js/new_post.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/0999d15b7c.js" crossorigin="anonymous"></script>
+</head>
 
 <body>
 
     <div class='logoutframe' style="display: none;">
         <!-- <form id="form" action="./php/login.php" method="post"> -->
->>>>>>> 4a0b6faa1f0ab5bf8b0a143129613367bf41123d
         <p class="validateTips">提示:是否要登出?</p>
         <div>
             <a href="index.php" onclick="delCookie('name'),delCookie('user_incession')">確認</a>
@@ -50,8 +42,17 @@
             </button> 
             <input type="text" name="price" id="price" placeholder="價格/1小時">
             <input type="text" name="place" id="place" placeholder="面交地點">
-            <p>結束日期:<input type="text" class="accept_date" id="accept_date" placeholder="請選擇日期"></p><br>
-            <p>可接受之時間:<input type="text" id="accept_time" placeholder="請選擇時間"></p><br>
+            <select id="stuff_select">
+                <option value="0">請選擇商品分類</option>
+                <option value="1">原文書</option>
+                <option value="2">計算機</option>
+                <option value="3">文具</option>
+                <option value="4">衣服</option>
+                <option value="5">居家用品</option>
+                <option value="6">其他</option>
+            </select>
+            <!-- <p>結束日期:<input type="text" class="accept_date" id="accept_date" placeholder="請選擇日期"></p><br>
+            <p>可接受之時間:<input type="text" id="accept_time" placeholder="請選擇時間"></p><br> -->
             <a onclick="appendItem()" style="cursor: pointer;">發文</a>
             <a href='index.php' style="cursor: pointer;">取消</a>
         </form>

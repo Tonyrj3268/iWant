@@ -185,6 +185,8 @@ function gotoregister(){
     let img = document.getElementById('post-content')[5].files;
     let price = document.getElementById('price').value;
     let place = document.getElementById('place').value;
+    let category = document.getElementById('stuff_select').selectedIndex;;
+
     let rent_borrow = null;
     if(document.querySelector('input[name="rent_borrow"]:checked') == null){
       updateTips('請選擇租或借');
@@ -198,6 +200,7 @@ function gotoregister(){
     formData.append('price',price);
     formData.append('place',place);
     formData.append('rent_borrow',rent_borrow);
+    formData.append('category',category);
     if(img !=null){
       console.log('have pic');
       formData.append('img',img[0]);

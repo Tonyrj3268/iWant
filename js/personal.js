@@ -196,3 +196,39 @@ function setLoginFrame(){
     }
   
   }
+
+function write_evaluation(element){
+  record_id=element.getAttribute("record_id");
+  eval_content="<a>請輸入評分1~5:</a><input class=eval_score></input></br>";
+  eval_content+="<a>請輸入評價:</a><input class=eval_content></input></br>";
+  eval_content+="<a onclick=send_evaluation("+record_id+",$('.eval_score').val(),$('.eval_content').val())>確認</a><a onclick=back_evaluation()>取消</a>";
+    $('.write_eval').html(eval_content);
+}
+
+function back_evaluation(){
+  eval_content="<a onclick=write_evaluation()>撰寫評價</a>"
+  $('.write_eval').html(eval_content);
+}
+
+function send_evaluation(record_id,score,content){
+  $.ajax({
+    async:false,
+    url: './php/send_evaluation.php',                        // url位置
+    type: 'post',                   // post/get
+    data: {record_id:record_id,score:score,content:content},
+
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      result = response;
+      if(result == "success"){
+        window.location.href='./personal_page.php';
+      }
+      else {
+        console.log(result);
+        updateTips(result)
+      }
+     }// 成功後要執行的函數
+})
+}

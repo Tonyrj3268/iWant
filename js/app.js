@@ -173,20 +173,19 @@ function setItemContainer(){
 }
 
 function getItemList(){
-  
-  //console.log(document.querySelector('input[name="item-category"]:checked').value);
+  let category = document.getElementById('change_category').selectedIndex;
   var result ="";
   $.ajax({
     async:       false,
     url: './php/collectItem.php',                        // url位置
     type: 'post',                   // post/get
-    data: {category: document.querySelector('input[name="item-category"]:checked').value},       // 輸入的資料
+    data: {category:category,status: document.querySelector('input[name="item-category"]:checked').value},       // 輸入的資料
     error: function (xhr) {
       console.log('fail');
      },      // 錯誤後執行的函數
     success: function (response) {
       result = response;
-      //console.log(response);
+    
      }// 成功後要執行的函數
 })
 return result;
@@ -411,7 +410,7 @@ function send_notify(to_user_id,stuff_id,case_id){
         success: function (response) {
           result = response;
           if(result == "success"){
-            chat(to_user_id);
+            window.location.href="./personal_page.php";
           }
           else {
             console.log(result);
@@ -574,6 +573,34 @@ function readURL(input){
 
   }
 
+}
+
+function change_category(){
+  let category = document.getElementById('change_category').selectedIndex;
+  let status = document.querySelector('input[name="item-category"]:checked').value
+  var result ="";
+  $.ajax({
+    async:       false,
+    url: './php/change_category.php',                        // url位置
+    type: 'post',                   // post/get
+    data: {category: category,status:status},       // 輸入的資料
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      result = response;
+      //console.log(response);
+     }})// 成功後要執行的函數
+
+  $container = $('#item-container');
+    $container.empty();
+    //item div
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("item");
+    itemDiv.innerHTML = result;
+
+    //add in list
+    $container.append(itemDiv);
 }
 
 $(function(){ 
