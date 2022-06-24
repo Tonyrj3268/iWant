@@ -1,11 +1,11 @@
-
+<?php include('./php/incession.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>首頁</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="./css/style.css">
@@ -21,14 +21,20 @@
 </head>
 
 <body>
-    <?php include('php/incession.php');?>
+    
     <div class='loginframe' style="display: none;">
         <form id="form" action="./php/login.php" method="post">
+        <img class="logo2", src="https://upload.cc/i1/2022/05/26/eKBEus.png", style="width: 160px; height:72px">
         <p class="validateTips">提示</p>
+        <div class="loginbynccu"><a>以您的政大信箱登入</a></div>
+        <a> </a>
         <div>
-            帳號: <input id='account' name="account" type="text" placeholder="請輸入帳號"><br>
-            密碼: <input id='password' name="password" type="password" placeholder="請輸入密碼"><br>
-            <a href="register.php">註冊帳號</a>
+            <input id='account' name="account" type="text" placeholder="請輸入帳號"><br>
+            
+            <input id='password' name="password" type="password" placeholder="請輸入密碼"><br>
+            <div class="loginframe-btn" onclick="loginframe_login(this)"><a>登入</a></div>
+            <div class="register_link"><a href="register.php">新加入iWant?註冊></a></div>
+            
         </div>
 
         <?php if(isset($_GET['error'])){ ?>
@@ -37,6 +43,7 @@
         </form>
     </div>
 
+    <
     <div class='itemframe' style="display: none;">
         <form id="upfile" action="./php/pic_store.php" method="post" enctype="multipart/form-data">
         <div>
@@ -46,10 +53,10 @@
         </form>
     </div>
     <div id="header-bar">
-            <a href="./index.php", style="width: 100px; height:45px;"><img class="logo", src="https://upload.cc/i1/2022/05/26/eKBEus.png", onclick=""></a>
+            <a href="./index.php"><img class="logo", src="https://upload.cc/i1/2022/05/26/eKBEus.png", onclick=""></a>
             <div class="search">
-                 <input class="search-bar2" type="text" name="search" id="search" placeholder="search">
-                 <button class="search-btn2"><i class="fa-solid fa-magnifying-glass"></i></button>
+                 <input class="search-bar" type="text" name="search" id="search" placeholder="功能停用">
+                 <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             <div class="btn">
                 <div class="notice"><a onclick="goSysNotify()"><i class="fa-solid fa-bell"></i></a></div>
@@ -70,12 +77,13 @@
                 <option>居家用品</option>
                 <option>其他</option>
             </select>
-    </div>
-    <div>
-        <div>
-        <label  onchange="setItemContainer()"><input type="radio" id="item-category" name="item-category" value="rent" checked="checked">我要租</label>
+            <div>
+            <label  onchange="setItemContainer()"><input type="radio" id="item-category" name="item-category" value="rent" checked="checked">我要租</label>
             <label  onchange="setItemContainer()"><input type="radio" id="item-category" name="item-category" value="borrow">我要借</label>
         </div>
+    </div>
+    <div>
+ 
         <div id='item-container'></div>
     </div>
     

@@ -63,15 +63,17 @@ function fetch_user()
  }
 function make_notify_dialog_box(notify_id)
  {
-  var modal_content = '<div id="notify_'+notify_id+'" class="notify_dialog" title="系統通知">';
-  modal_content += '<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-'+notify_id+'" class="ui-dialog-title">系統通知</span></div>';
-  modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="notify_history" notify_id="'+notify_id+'" id="notify_history_'+notify_id+'">';
+  var modal_content = '<div><a class=personal_page_title>系統通知</a><div></div><hr class=personal_page_hr></div>';
+  modal_content += '<div id="notify_'+notify_id+'" class="notify_dialog" title="">';
+  modal_content += '<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-'+notify_id+'" class="ui-dialog-title"></span></div>';
+  modal_content += '<div style="background-color:white;height:400px; border:1px solid #ccc; overflow-y: scroll; padding:16px;" class="notify_history" notify_id="'+notify_id+'" id="notify_history_'+notify_id+'">';
   if(notify_id){
     modal_content += fetch_notify_chat_history(notify_id);}
   else{
     modal_content += "請選擇信件";
   }
   modal_content += '</div>';
+  modal_content += '<div class="form-group"></div>';
   modal_content+= '</div></div>';
   $('#sys_notify_details').html(modal_content);
   
@@ -103,7 +105,7 @@ function fetch_notify_chat_history(notify_id)
 $(document).on('click', '.notify', function(){
   var notify_id = $(this).attr('notify_id');
   make_notify_dialog_box(notify_id);
-  console.log($(this).children("td"));
+  fetch_user();
   $(this).children("td").css("font-weight","normal")
  });
 
@@ -111,6 +113,7 @@ $(document).ready(function(){
 setLoginFrame()
 fetch_user();
 make_notify_dialog_box("");
+  get_msg_notice();
 /*setInterval(function(){
   fetch_user();
   update_chat_history_data();
@@ -130,5 +133,49 @@ function setLoginFrame(){
       allFields.val( "" ).removeClass( "ui-state-error" );
     }
   });
+
+}
+function get_sys_notice(){
+  var result ="";
+  $.ajax({
+    async:       false,
+    url: './php/get_sys_notice.php',                        // url位置
+    type: 'post',                   // post/get
+    data: {user:getCookie('name')},       // 輸入的資料
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      
+      result = response;
+      console.log(result);
+     }// 成功後要執行的函數
+})
+if(result>0){
+  $('.sys_notice a').text(result);
+  $('.sys_notice').attr({"style":"visibility:visible"});
+}
+
+}
+function get_msg_notice(){
+  var result ="";
+  $.ajax({
+    async:       false,
+    url: './php/get_msg_notice.php',                        // url位置
+    type: 'post',                   // post/get
+    data: {user:getCookie('name')},       // 輸入的資料
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      
+      result = response;
+      console.log(result);
+     }// 成功後要執行的函數
+})
+if(result>0){
+  $('.msg_notice a').text(result);
+  $('.msg_notice').attr({"style":"visibility:visible"});
+}
 
 }

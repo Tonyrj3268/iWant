@@ -22,7 +22,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $conn)
  ORDER BY chat_timestamp asc
  ";
  $result = mysqli_query($conn,$query);
- $output = '<ul class="list-unstyled">';
+ $output = '<ul type="none" class="list-unstyled">';
  foreach($result as $row)
  {
   $user_name = '';

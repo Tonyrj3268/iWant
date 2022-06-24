@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>註冊</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="./css/style.css">
@@ -41,9 +41,9 @@
         <a id="login" onclick="$('.loginframe').dialog('open');">登入/註冊</a>
     </div> -->
     <div id="header-bar">
-            <a href="./index.php", style="width: 100px; height:45px;"><img class="logo", src="https://upload.cc/i1/2022/05/26/eKBEus.png", onclick=""></a>
+            <a href="./index.php"><img class="logo", src="https://upload.cc/i1/2022/05/26/eKBEus.png", onclick=""></a>
             <div class="search">
-                 <input class="search-bar" type="text" name="search" id="search" placeholder="search">
+                 <input class="search-bar" type="text" name="search" id="search" placeholder="功能停用">
                  <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             <div class="btn">
@@ -57,43 +57,41 @@
     
     <form id="form-register" action="##" method="post">
         <div class="share_Panel" id="account_panel">
-            請輸入帳號:<input id='reg_account' name="account" type="text"><br>
-            請輸入密碼:<input id='reg_password' name="password" type="password" autocomplete="off"><br>
-            請再輸入一次密碼:<input id='reg_repassword' name="password" type="password" autocomplete="off"><br>
-            <button class="nextTab"  data-panel-open="#verify_panel" type="button">下一頁</button>
+            <img class="register_logo" src="https://upload.cc/i1/2022/05/26/eKBEus.png" onclick="">
+            <a>以你的政大信箱註冊</a>
+            <input id='reg_account' name="account" type="text" placeholder="請輸入帳號">
+            <input id='reg_password' name="password" type="password" autocomplete="off" placeholder="請輸入密碼">
+            <input id='reg_repassword' name="password" type="password" autocomplete="off" placeholder="請再輸入一次密碼">
+            <p class="validateTips">提示文字</p>
+
+            <a class="nextTab"  data-panel-open="#info_panel" >註冊</a>
             <a href="index.php">返回首頁</a>
+            <a onclick="$('.loginframe').dialog('open');">已有iWant帳號?登入></a>
         </div>
-        <div class="sharePanel" id="verify_panel"> 
-            <div class="shareFade"> 
-             <div>
-                請輸入電子信箱:<input id='reg_email' name="email" type="email" required>
-                <button>點擊寄送驗證碼</button><br>
-                請輸入驗證碼:<input name="" type="text"><br>
-                <button class="nextTab" data-panel-open="#info_panel" type="button">下一頁</button>
-                <a class="shareClose" data-close-panel="#verify_panel">返回上頁</a>
-            </div>
-            </div> 
-       </div> 
        <div class="sharePanel" id="info_panel"> 
             <div class="shareFade"> 
              <div>
-                 照片(選填)
+             <img class="share_logo" src="https://upload.cc/i1/2022/05/26/eKBEus.png" onclick=""><br>
+                <input id='reg_email' name="email" type="email" required placeholder="請輸入Email">
+                <a>發送驗證碼</a><br>
+                <input name="" type="text" placeholder="請填寫驗證碼(功能停用)"><br>
                 <button style="width: 100px; height: 100px" id="upload">
                     <input id="reg_img" type="file" name="img" onchange="readURL(this)" targetID="preview_img">
                     <img src="./uploads/default-image.jpg" alt="" id="preview_img">
                 </button></br>
-                請輸入稱呼:<input id='reg_name' name="name" type="text" required><br>
-                請輸入系級:<input id='reg_dep' name="department" type="text"><br>
-                請輸入學號:<input id='reg_stu_ID' name="stu_ID" type="text" required><br>
-                是否有額外聯絡方式:<input id='reg_others' name="others" type="text"><br>
-                <button class="nextTab" data-panel-open="#info_panel" type="button">註冊</button>
-                <a class="shareClose" data-close-panel="#info_panel">返回上頁</a>
+                <input id='reg_name' name="name" type="text" required placeholder="請輸入暱稱"><br>
+                <input id='reg_dep' name="department" type="text" placeholder="請輸入系級"><br>
+                <input id='reg_stu_ID' name="stu_ID" type="text" required placeholder="請輸入學號"><br>
+                <input id='reg_others' name="others" type="text" placeholder="請輸入手機號碼(選填)"><br>
+                <a class="checkTab" data-panel-open="#info_panel" >確認註冊</a>
+                <a class="shareClose" data-close-panel="#info_panel">返回</a>
+                <a onclick="$('.loginframe').dialog('open');">已有iWant帳號?登入></a>
+                <p class="validateTips_share">提示文字</p>
             </div>
             </div> 
        </div> 
     </form>   
-    <p class="validateTips">提示</p>
-
+    
    
        
 </body>

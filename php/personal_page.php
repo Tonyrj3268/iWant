@@ -9,7 +9,7 @@ if(isset($_POST['name'])){
     $result = mysqli_query($conn,$query);
     if(mysqli_num_rows($result)>0){
         $row = mysqli_fetch_row($result);
-        $pic='uploads/default-image.jpg';
+        $pic='uploads/person.jpg';
         if($row[4]!=null){
             $pic='uploads/'.$row[4];
         }
@@ -21,21 +21,21 @@ if(isset($_POST['name'])){
                 <a>租借紀錄:</a><a href=""></a>';*/
         echo '<div id="personal_page_intro_card">
                 <div>
-                    <img src="'.$pic.'"style="width: 100px ; height: 100px;">
+                    <img src="'.$pic.'"style="width: 100px ; height: 100px;border-radius:50px">
                 </div>
                 <div>
-                    <a id="personal_name">'.$row[0] .'</a></br>
-                    <a id="personal_email">'.$row[3] .'</a>
+                    <a id="personal_name">暱稱:'.$row[0] .'</a></br>
+                    <a id="personal_email">信箱:'.$row[3] .'</a>
                 </div>
             </div>
             <div id="personal_page_functions">
-                <div id="personal_page_function_1">
-                <a onclick="get_perosinal_function_1()">我的租借紀錄</a>
+                <div id="personal_page_function_1" class="be-selected-function">
+                <a onclick="show_my_stuff()">我的租借紀錄</a>
                 </div>
-                <div id="personal_page_function_2">
+                <div id="personal_page_function_2" class="be-selected-function">
                     <a onclick="get_perosinal_function_2()">編輯個人商品</a>
                 </div>
-                <div id="personal_page_function_3">
+                <div id="personal_page_function_3" class="be-selected-function"> 
                     <a onclick="get_perosinal_function_3()">編輯個人資料</a>
                 </div>
             </div>

@@ -11,7 +11,7 @@ function fetch_notify($user_id, $notify_id, $conn)
  $query = "SELECT sys_msg FROM `db-test`.sys_notify where sys_notify_index='".$notify_id."' and to_user_id='".$user_id."'";
  
  $result = mysqli_query($conn,$query);
- $output = '<ul class="list-unstyled">';
+ $output = '<ul type="none" class="list-unstyled">';
  foreach($result as $row){
     $output .= '
     <li style="border-bottom:1px dotted #ccc">

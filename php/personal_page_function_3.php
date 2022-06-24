@@ -24,12 +24,7 @@ if(isset($_POST['name'])){
             #$renter_name=get_user_name($row['user_account'],$conn);
             $frame.='<form id="personal_f3_form" action="./edit_personal_info.php" method="post">
                     <div class="personal_f3_item">
-                    <div>
-                    <button style="width: 100px; height: 100px" id="upload">
-                        <input id="personal_f3_personal_img" type="file" name="img" onchange="readURL(this)" targetID="preview_img">
-                        <img src="'.$pic.'" alt="" id="preview_img">
-                    </button> 
-                    </div>
+                    
                     <div class="personal_f3_personal_intro">
                         <a>帳號:</a></br><input id="personal_f3_personal_ID"  name="status" value='.$row['user_account'].' disabled="disabled"></input></br>
                         <a>暱稱:</a></br><input id="personal_f3_personal_name"  name="status" value='.$row['user_name'].'></input></br>
@@ -39,9 +34,14 @@ if(isset($_POST['name'])){
                         <a>額外聯絡方式:</a></br><input id="personal_f3_personal_others"  name="status" value='.$row['user_email'] .'></input></br>
                         
                     </div>
-                    <div>
-                        <a onclick="update_info()">修改</a>
+                    <div style="display:flex;flex-direction: column;justify-content: center;align-items: center;">
+                    <button style="width: 200px; height: 200px" id="upload">
+                        <input id="personal_f3_personal_img" type="file" name="img" onchange="readURL(this)" targetID="preview_img" style="width: 200px; height: 200px">
+                        <img src="'.$pic.'" alt="" id="preview_img" style="width: 200px; height: 200px">
+                    </button> 
+                    <a style="cursor:pointer;position: absolute;width: 80px;height: 30px;left: 750px;top: 441px;text-align: center;background-color:#498EAF;border-radius: 5px;color: #FFFFFF;"onclick="update_info()">儲存</a>
                     </div>
+            
                 </div></form>';
         
         

@@ -7,27 +7,26 @@
         $content=$_POST['content'];
         $user_account=$_COOKIE['name'];
         $price=$_POST['price'];
-        $place=$_POST['place'];
         $category=$_POST['category'];
         $rent_borrow=$_POST['rent_borrow'];
         if(empty($topic)){
-            echo 'topic is required';
+            echo '請輸入物品名稱';
         }
         else if(empty($content)){
-            echo 'content is required';
+            echo '請輸入物品描述';
         }
         else if(empty($price)){
-            echo 'price is required';
-        }
-        else if(empty($place)){
-            echo 'place is required';
+            echo '請輸入物品價格';
         }
         else if(empty($rent_borrow)){
-            echo 'select rent or borrow';
+            echo '請選擇租或借';
+        }
+        else if(empty($category)){
+            echo '請選擇物品分類';
         }
 
         else if(empty($_FILES['img']['name'])){
-            $query = "insert into stuff_info(stuff_status, stuff_topic, stuff_content, stuff_price, stuff_place, user_account, stuff_category) values('$rent_borrow','$topic','$content','$price','$place','$user_account',$category)";
+            $query = "insert into stuff_info(stuff_status, stuff_topic, stuff_content, stuff_price, user_account, stuff_category) values('$rent_borrow','$topic','$content','$price','$user_account',$category)";
             $result = mysqli_query($conn,$query);
             if ($result){
                 echo 'success';
@@ -59,12 +58,12 @@
                     if(in_array($img_ex_lc,$allowed_exs)){
                         //rename the img name with random string
                         $new_img_name = uniqid("IMG-",true) . '.' . $img_ex_lc;
-        
+                        
                         $img_upload_path = "../uploads/" . $new_img_name;
         
                         move_uploaded_file($tmp_name, $img_upload_path);
         
-                        $query = "insert into stuff_info(stuff_status, stuff_topic, stuff_content, stuff_img_name, stuff_price, stuff_place, user_account,stuff_category) values('$rent_borrow','$topic','$content','$new_img_name','$price','$place','$user_account',$category)";
+                        $query = "insert into stuff_info(stuff_status, stuff_topic, stuff_content, stuff_img_name, stuff_price, user_account,stuff_category) values('$rent_borrow','$topic','$content','$new_img_name','$price','$user_account',$category)";
                         $result = mysqli_query($conn,$query);
                         if ($result){
                             $em = $result;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>發文</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="./css/style.css">
@@ -29,33 +29,88 @@
     </div>
     <?php include 'php/header_bar.php';?>
         <form action="" method="post" id='post-content' enctype="multipart/form-data">
-            <div>
-                <label><input name="rent_borrow" type="radio" value="rent" />租 </label> 
-                <label><input name="rent_borrow" type="radio" value="borrow" />借 </label> 
-            </div>
-            <input type="text" name="topic" id="topic" placeholder="標題">
-            <textarea id="content" name="content" cols="30" rows="10" placeholder="商品敘述......"></textarea>
-            <p>商品實際圖片(選填)</p>
-            <button style="width: 100px; height: 100px" id='upload'>
-                <input id='img'type="file" name="img" onchange="readURL(this)" targetID="preview_img">
-                <img src="./uploads/default-image.jpg" alt="" id="preview_img">
+            <div class="post_div" style="display:flex;flex-direction: row;margin-right:5%;gap:10px;">
+            <div style="display:flex;flex-direction: column;margin-right:5%;gap:10px;justify-content: center;align-items: center;">
+            <button style="width: 300px; height: 348px" id='upload'>
+                <input id='img'type="file" name="img" onchange="readURL(this)" targetID="preview_img" style="width: 300px; height: 348px">
+                <img src="./uploads/upload.jpg" alt="" id="preview_img"> 
             </button> 
-            <input type="text" name="price" id="price" placeholder="價格/1小時">
-            <input type="text" name="place" id="place" placeholder="面交地點">
-            <select id="stuff_select">
-                <option value="0">請選擇商品分類</option>
-                <option value="1">原文書</option>
-                <option value="2">計算機</option>
-                <option value="3">文具</option>
-                <option value="4">衣服</option>
-                <option value="5">居家用品</option>
-                <option value="6">其他</option>
-            </select>
-            <!-- <p>結束日期:<input type="text" class="accept_date" id="accept_date" placeholder="請選擇日期"></p><br>
-            <p>可接受之時間:<input type="text" id="accept_time" placeholder="請選擇時間"></p><br> -->
-            <a onclick="appendItem()" style="cursor: pointer;">發文</a>
-            <a href='index.php' style="cursor: pointer;">取消</a>
+            <p class="validateTips">提示:是否要發文?</p>
+            </div>
+            
+            <div style="display:flex;flex-direction: column;gap:10px;">
+                <a>物品名稱:</a>
+                <div style="display:flex;flex-direction: row;gap:10px;">
+                    <input type="text" name="topic" id="topic" placeholder=" 請輸入物品名稱..." style="border: 1px solid #909090;border-radius: 8px; width:60%">
+                    <div>
+                        <label>租給別人: <input name="rent_borrow" type="radio" value="rent" /> </label> 
+                        <label>我需要借: <input name="rent_borrow" type="radio" value="borrow" /></label> 
+                    </div>
+                </div>
+                <a>物品描述:</a>
+                <textarea id="content" name="content" cols="30" rows="10" placeholder=" 請以五十字以內描述商品外觀、狀況..." style="border: 1px solid #909090;border-radius: 8px;width:550px;"></textarea>
+
+                <div style="display:flex;flex-direction: row;gap:10px;">
+                    <div style="display:flex;flex-direction: column;">
+                        <a>設定金額:</a>
+                        <input type="text" name="price" id="price" placeholder=" $新台幣/一小時" style="border: 1px solid #909090;border-radius: 8px;">
+                    </div>
+                    <div style="display:flex;flex-direction: column;">
+                        <a>選擇物品分類:</a>
+                        <select id="stuff_select">
+                            <option value="0">請選擇物品分類</option>
+                            <option value="1">原文書</option>
+                            <option value="2">計算機</option>
+                            <option value="3">文具</option>
+                            <option value="4">衣服</option>
+                            <option value="5">居家用品</option>
+                            <option value="6">其他</option>
+                        </select>
+                    </div>
+                
+                </div>
+                
+                
+                </div>
+            </div>
+            <div style="display:flex;flex-direction: row;">
+                <a href='index.php' 
+                style="position: absolute;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 9px 15px;
+                        gap: 10px;
+                        width: 10%;
+                        height: 8%;
+                        left: 60%;
+                        top: 70%;
+                        font-size:24px;
+                        color:#498EAF !important;
+                        cursor: pointer;">取消</a>
+                <a onclick="appendItem()" 
+                style="position: absolute;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 9px 15px;
+                        gap: 10px;
+                        width: 10%;
+                        height: 8%;
+                        left: 70%;
+                        top: 70%;
+                        font-size:40px;
+                        color:#ffffff !important;
+                        background: #498EAF;
+                        border-radius: 10px;
+                        cursor: pointer;">刊登!</a>
+            </div>
+            
+            
+            
         </form>
-        <p class="validateTips">提示:是否要發文?</p>
+        
 </body>
 </html>

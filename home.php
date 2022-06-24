@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>首頁</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="./css/style.css">
@@ -24,7 +24,8 @@
         <!-- <form id="form" action="./php/login.php" method="post"> -->
         <p class="validateTips">提示:是否要登出?</p>
         <div>
-            <a href="index.php" onclick="delCookie('name'),delCookie('user_incession')">確認</a>
+            <!--<a href="./index.php" onclick="delCookie('name'),delCookie('user_incession')">確認</a> -->
+            <a  href="./index.php" onclick="delCookie('name'),delCookie('user_incession')">確認</a>
             <a onclick="$('.logoutframe').dialog('close')" style="cursor: pointer;">取消</a>
         </div>
         <!-- </form> -->
@@ -39,7 +40,13 @@
     </div>
     <div class='askframe' style="display: none;" title="是否要租借此商品?"> 
         <div>
-           <a href="">點擊確認將為您自動傳送通知給賣家並跳至訊息頁面!</a>
+           <a href="">點擊確認將為您自動傳送通知給賣家並跳至個人頁面!</a>
+        </div>
+        </form>
+    </div>
+    <div class='acceptframe' style="display: none;" title="是否要出借此商品?"> 
+        <div>
+           <a href="">點擊確認將為您自動傳送通知給買家並跳至個人頁面!</a>
         </div>
         </form>
     </div>
@@ -54,12 +61,13 @@
                 <option>居家用品</option>
                 <option>其他</option>
         </select>
-    </div>
-    <div>
         <div>
             <label  onchange="setItemContainer()"><input type="radio" id="item-category" name="item-category" value="rent" checked="checked">我要租</label>
             <label  onchange="setItemContainer()"><input type="radio" id="item-category" name="item-category" value="borrow">我要借</label>
         </div>
+    </div>
+    <div>
+        
         <div id='item-container'></div>
     </div>
     <div id='item-append'>

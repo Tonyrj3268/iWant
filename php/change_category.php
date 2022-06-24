@@ -42,28 +42,28 @@
 
                 function count_rating($stuff_id,$conn)
                 {
-                    $rating = 0;
+                    $rating =0;
                     $i=0;
-                    $query = "select rating from stuff_record Where stuff_id=".$stuff_id."";
+                    $query = "select rating from stuff_record Where stuff_id=".$stuff_id." and rating is not null";
                     $result = mysqli_query($conn,$query);
                     if($result){
                         foreach($result as $row){
                             $i++;
-                            $rating.=$row['rating'];
+                            $rating=$rating+(int)$row['rating'];
                         }
                     }
                     if($rating==0){
                         return "無";
                     }
                     else{
-                        $rating=$rating/$i;
+                        $avgrating=$rating/$i;
                         $star='';
-                        for($i=0;$i<$rating;$i++){
+                        for($i=0;$i<$avgrating;$i++){
                             $star.="⭐";
                         }
 
                     return $star;
                     }
                     
-                }                 
+                }           
 ?>

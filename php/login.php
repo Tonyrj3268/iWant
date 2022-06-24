@@ -7,10 +7,10 @@
         $password=$_POST['password'];
 
         if(empty($account)){
-            echo "account is required";
+            echo "請輸入帳號";
         }
         else if(empty($password)){
-            echo "password is required";
+            echo "請輸入密碼";
         }
         else{
             $query = "SELECT user_account, MD5(UNIX_TIMESTAMP() + user_account + RAND(UNIX_TIMESTAMP()))

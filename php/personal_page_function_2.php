@@ -5,7 +5,7 @@ if(isset($_POST['name'])){
 
     require_once 'connect.php';
 
-    $query = "SELECT stuff_ID,stuff_status, stuff_topic, stuff_content,stuff_price,stuff_place, stuff_img_name,user_account FROM stuff_info where user_account ='$name';";
+    $query = "SELECT stuff_ID,stuff_status, stuff_topic, stuff_content,stuff_price,stuff_place, stuff_img_name,user_account,stuff_category FROM stuff_info where user_account ='$name';";
     $result = mysqli_query($conn,$query);
 
     $frame="<div>
@@ -31,11 +31,12 @@ if(isset($_POST['name'])){
                         <a id="personal_f2_stuff_name">商品價格:'.$row['stuff_price'] .'</a><input type="hidden" name="price" value='.$row["stuff_price"] .'></input>
                         <input type="hidden" name="place" value='.$row["stuff_place"] .'></input>
                         <input type="hidden" name="user" value='.$row["user_account"] .'></input>
+                        <input type="hidden" name="category" value='.$row["stuff_category"] .'></input>
                     </div>
                     <div>
                         <button>修改</button>
                     </div>
-                </div></form>';
+                </div><hr class="personal_page_f1_hr"></form>';
         
         
     }

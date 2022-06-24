@@ -8,14 +8,17 @@
     $stu_ID=$_POST['stu_ID'];
     $others=$_POST['others'];
     require_once 'connect.php';
-    if(empty($name)){
-        echo "name is required";
+    if(empty($email)){
+        echo "請輸入信箱";
+    }
+    else if(empty($name)){
+        echo "請輸入暱稱";
     }
     else if(empty($dep)){
-        echo "department is required";
+        echo "請輸入系級";
     }
     else if(empty($stu_ID)){
-        echo "student ID is required";
+        echo "請輸入學號";
     }
     else if(empty($_FILES['img']['name'])){
         
@@ -28,11 +31,11 @@
             if($result){
                 echo "accept";}
             else{
-                echo "register fail";
+                echo "註冊失敗";
             }
         }
         else{
-            echo "already have this student ID";
+            echo "此學號以註冊過";
         }
 
     }
@@ -64,20 +67,20 @@
                     $query = "insert into user_info(user_account,user_password,user_email,user_name,user_dep,user_stu_ID,user_img_name,user_others) values('$account','$password','$email','$name','$dep','$stu_ID','$new_img_name','$others')";
                     $result = mysqli_query($conn,$query);
                     if ($result){
-                        echo "accept";
+                        echo "accept"; 
                     }
                     else{
                     die('Error: ' . mysqli_error($conn));//如果sql執行失敗輸出錯誤
                     }
                 } 
                 else{
-                    echo 'you can not upload file of this type';
+                    echo '不可上傳此類型檔案';
                 }
             }
     
         }
         else{
-            echo 'unknown error occured';
+            echo '未知錯誤發生';
         }
     } 
   

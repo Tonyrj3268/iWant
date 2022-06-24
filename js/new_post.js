@@ -1,4 +1,47 @@
+function get_sys_notice(){
+  var result ="";
+  $.ajax({
+    async:       false,
+    url: './php/get_sys_notice.php',                        // url位置
+    type: 'post',                   // post/get
+    data: {user:getCookie('name')},       // 輸入的資料
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      
+      result = response;
+      console.log(result);
+     }// 成功後要執行的函數
+})
+if(result>0){
+  $('.sys_notice a').text(result);
+  $('.sys_notice').attr({"style":"visibility:visible"});
+}
 
+}
+function get_msg_notice(){
+  var result ="";
+  $.ajax({
+    async:       false,
+    url: './php/get_msg_notice.php',                        // url位置
+    type: 'post',                   // post/get
+    data: {user:getCookie('name')},       // 輸入的資料
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      
+      result = response;
+      console.log(result);
+     }// 成功後要執行的函數
+})
+if(result>0){
+  $('.msg_notice a').text(result);
+  $('.msg_notice').attr({"style":"visibility:visible"});
+}
+
+}
 function gotoregister(){
     window.location.href="./register.php";
   }
@@ -182,9 +225,9 @@ function gotoregister(){
     var formData = new FormData();
     let topic = document.getElementById('topic').value;
     let content = document.getElementById('content').value;
-    let img = document.getElementById('post-content')[5].files;
+    let img = document.getElementById('img').files;
     let price = document.getElementById('price').value;
-    let place = document.getElementById('place').value;
+
     let category = document.getElementById('stuff_select').selectedIndex;;
 
     let rent_borrow = null;
@@ -198,7 +241,6 @@ function gotoregister(){
     formData.append('topic',topic);
     formData.append('content',content);
     formData.append('price',price);
-    formData.append('place',place);
     formData.append('rent_borrow',rent_borrow);
     formData.append('category',category);
     if(img !=null){
@@ -371,4 +413,6 @@ function gotoregister(){
   $(function(){ 
     
     setLoginFrame();
+    get_sys_notice();
+  get_msg_notice();
       })

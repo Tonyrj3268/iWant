@@ -60,15 +60,15 @@ function fetch_user()
  }
 function make_chat_dialog_box(to_user_id, to_user_name)
  {
-  var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
-  modal_content += '<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-'+to_user_id+'" class="ui-dialog-title">You have chat with '+to_user_id+'</span></div>';
-  modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
+  var modal_content = '<div><a class=personal_page_title>訊息內容</a><div></div><hr class=personal_page_hr></div>';
+  modal_content += '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="chat with '+to_user_name+'">';
+  modal_content += '<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-'+to_user_id+'" class="ui-dialog-title"></span></div>';
+  modal_content += '<div style="background-color:white;height:400px; border:1px solid #ccc; overflow-y: scroll; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
   modal_content += fetch_user_chat_history(to_user_id);
   modal_content += '</div>';
   modal_content += '<div class="form-group">';
   modal_content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control"></textarea>';
-  modal_content += '</div><div class="form-group" align="right">';
-  modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
+  modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="chat-btn btn-info send_chat">Send</button></div></div>';
   $('#user_model_details').html(modal_content);
  }
 
@@ -100,7 +100,7 @@ $(document).on('click', '.start_chat', function(){
   var to_user_id = $(this).data('touserid');
   var to_user_name = $(this).data('tousername');
   make_chat_dialog_box(to_user_id, to_user_name);
-  
+  fetch_user();
   /*$("#user_dialog_"+to_user_id).dialog({
    autoOpen:false,
    width: 70%
@@ -126,7 +126,8 @@ $(document).on('click', '.send_chat', function(){
   });
 
 $(document).ready(function(){
-setLoginFrame()
+setLoginFrame();
+get_sys_notice();
 fetch_user();
 if(check_get()){
   var chatwith=check_get();
@@ -138,12 +139,55 @@ else{
   make_chat_dialog_box(to_user_id, to_user_name);
 }
 
-/*setInterval(function(){
+setInterval(function(){
   fetch_user();
   update_chat_history_data();
- }, 5000); */
+ }, 5000); 
 });
+function get_sys_notice(){
+  var result ="";
+  $.ajax({
+    async:       false,
+    url: './php/get_sys_notice.php',                        // url位置
+    type: 'post',                   // post/get
+    data: {user:getCookie('name')},       // 輸入的資料
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      
+      result = response;
+      console.log(result);
+     }// 成功後要執行的函數
+})
+if(result>0){
+  $('.sys_notice a').text(result);
+  $('.sys_notice').attr({"style":"visibility:visible"});
+}
 
+}
+function get_msg_notice(){
+  var result ="";
+  $.ajax({
+    async:       false,
+    url: './php/get_msg_notice.php',                        // url位置
+    type: 'post',                   // post/get
+    data: {user:getCookie('name')},       // 輸入的資料
+    error: function (xhr) {
+      console.log('fail');
+     },      // 錯誤後執行的函數
+    success: function (response) {
+      
+      result = response;
+      console.log(result);
+     }// 成功後要執行的函數
+})
+if(result>0){
+  $('.msg_notice a').text(result);
+  $('.msg_notice').attr({"style":"visibility:visible"});
+}
+
+}
 function check_get(){
   var getUrlString = location.href;
   var url = new URL(getUrlString);
@@ -169,3 +213,33 @@ function setLoginFrame(){
   });
     
 }
+$(document).keypress(function(e) 
+    { 
+        switch(e.which) 
+        { 
+            // user presses the “a” 
+            case 13:    
+            var to_user_id = $('.send_chat').attr('id');
+            var chat_message = $('#chat_message_'+to_user_id).val();
+            
+            if(chat_message.length>0){
+              $.ajax({
+                url:"./php/send_chat.php",
+                method:"POST",
+                data:{to_user_id:to_user_id,name:getCookie("name"),chat_message:chat_message},
+                success:function(data)
+                {
+                $('#chat_message_'+to_user_id).val('');
+                $('#chat_history_'+to_user_id).html(data);
+                fetch_user();
+                update_chat_history_data();
+                }
+              })
+            }
+            
+              break;  
+
+            
+        } 
+    });
+    

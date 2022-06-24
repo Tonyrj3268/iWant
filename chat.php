@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>聊天</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="./css/style.css">
@@ -27,7 +27,32 @@
     <?php include 'php/header_bar.php';?>
 
     <style>
-
+.chat-btn{
+    background-color: #498EAF;
+    color: #FFF;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.97);
+    height: 30px;
+    margin: 10px 10px 5px 10px;
+    width: 50px;
+}
+.form-control{
+    height: 30px;
+    width:800px;
+    border-radius: 8px;
+    margin: 10px 10px 5px 10px;
+    
+}
+.form-group{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: #498EAF;
+    border-radius: 0px 0px 20px 20px;
+}
+.user_dialog{
+    background-color: white;
+}
 .chat_message_area
 {
  position: relative;
@@ -83,6 +108,21 @@
 }
 .ui-dialog-title{
     font-size: 24px;
+}
+
+.ui-dialog-titlebar{
+    background-color: #498EAF;
+    border-radius: 30px 30px 0px 0px;
+    height: 50px;
+}
+
+.user_dialog{
+    position: absolute;
+    left:633px;
+    top: 205px;
+    width: 745px;
+    height: 500px;
+    border-radius: 30px;
 }
 
 </style>  

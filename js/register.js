@@ -71,7 +71,7 @@ function gotoregister(){
   
   function register(){
     var tips='';
-    console.log(document.getElementById('reg_img').files[0]);
+    console.log("hi");
     let $img = document.getElementById('reg_img').files[0];
     var formData = new FormData();
     formData.append('account',$(reg_account).val());
@@ -91,10 +91,11 @@ function gotoregister(){
       url: './php/register_info.php',                        // url位置
       type: 'post',                   // post/get
       data: formData,
-      processData: false, // 告诉jQuery不要去处理发送的数据
+      processData: false, // 告訴jQuery不要去處理發送的數據
       contentType: false,
       success: function (response) {
         tips = response;
+        console.log(tips);
        }// 成功後要執行的函數
   })
   return tips;
@@ -296,7 +297,19 @@ function gotoregister(){
   
     setTimeout(function() {
       tips
-        .text("提示")
+        .text("提示文字")
+        .removeClass( "ui-state-highlight", 1500 );
+    }, 5000 );
+  }
+  function updateTips_share( t ) {
+    var tips = $(".validateTips_share" );
+    tips
+      .text( t )
+      .addClass( "ui-state-highlight" );
+  
+    setTimeout(function() {
+      tips
+        .text("提示文字")
         .removeClass( "ui-state-highlight", 1500 );
     }, 5000 );
   }
@@ -347,13 +360,15 @@ function gotoregister(){
       }
     });
   
-    $('#account_panel button.nextTab').on('click', function() { 
+    $('#account_panel a.nextTab').on('click', function() { 
       var result = register_verify_account().trim();
       if(result == "accept"){
         console.log('in1');
         panel = $(this).attr('data-panel-open'); 
+        
         $(panel).animate({ 
-         'width': 'show' 
+         'width': 'show' ,
+         'marginRight':'20%'
         }, 1000, function() { 
          $(panel +' .shareFade').fadeIn(100); 
         }); 
@@ -363,23 +378,8 @@ function gotoregister(){
        }
       }
      ); 
-     $('#verify_panel button.nextTab').on('click', function() { 
-      var result = register_verify_email().trim();
-      if(result == "accept"){
-        console.log('in2');
-        panel = $(this).attr('data-panel-open'); 
-        $(panel).animate({ 
-         'width': 'show' 
-        }, 1000, function() { 
-         $(panel +' .shareFade').fadeIn(100); 
-        }); 
-       }
-       else{
-        updateTips(result);
-       }
-      }
-     ); 
-     $('#info_panel button.nextTab').on('click', function() { 
+
+     $('#info_panel a.checkTab').on('click', function() { 
       var result =  register().trim();
       if(result == "accept"){
         console.log('in3');
@@ -387,7 +387,7 @@ function gotoregister(){
         $( '.loginframe' ).dialog("open");
        }
        else{
-        updateTips(result);
+        updateTips_share(result);
        }
       }
      ); 

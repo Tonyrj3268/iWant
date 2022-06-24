@@ -8,7 +8,6 @@
         $content=$_POST['content'];
         $user_account=$_COOKIE['name'];
         $price=$_POST['price'];
-        $place=$_POST['place'];
         $rent_borrow=$_POST['rent_borrow'];
         if(empty($topic)){
             echo 'topic is required';
@@ -19,15 +18,12 @@
         else if(empty($price)){
             echo 'price is required';
         }
-        else if(empty($place)){
-            echo 'place is required';
-        }
         else if(empty($rent_borrow)){
             echo 'select rent or borrow';
         }
 
         else if(empty($_FILES['img']['name'])){
-            $query = "UPDATE stuff_info SET stuff_status = '$rent_borrow', stuff_topic = '$topic', stuff_content = '$content', stuff_price = '$price', stuff_place = '$place'WHERE user_account = '$user_account' and stuff_ID='$id'";
+            $query = "UPDATE stuff_info SET stuff_status = '$rent_borrow', stuff_topic = '$topic', stuff_content = '$content', stuff_price = '$price'WHERE user_account = '$user_account' and stuff_ID='$id'";
             $result = mysqli_query($conn,$query);
             if ($result){
                 echo 'success';
@@ -64,7 +60,7 @@
         
                         move_uploaded_file($tmp_name, $img_upload_path);
         
-                        $query = "UPDATE stuff_info SET stuff_status = '$rent_borrow', stuff_img_name = '$new_img_name', stuff_topic = '$topic', stuff_content = '$content', stuff_price = '$price', stuff_place = '$place'WHERE user_account = '$user_account' and stuff_ID='$id'";
+                        $query = "UPDATE stuff_info SET stuff_status = '$rent_borrow', stuff_img_name = '$new_img_name', stuff_topic = '$topic', stuff_content = '$content', stuff_price = '$price'WHERE user_account = '$user_account' and stuff_ID='$id'";
                         $result = mysqli_query($conn,$query);
                         if ($result){
                             $em = $result;

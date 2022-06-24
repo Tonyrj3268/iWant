@@ -18,31 +18,41 @@ FROM (SELECT * FROM user_chat WHERE user_id='".$_COOKIE['name']."'
 $result = mysqli_query($conn,$query);
 
 
-$output = '
-<table class="table table-bordered table-striped">
- <tr>
-  <td>Username</td>
-  <td>Status</td>
-  <td>Action</td>
- </tr>
-';
-
+$output ='<div class="sys_page_intro">
+<div>
+    <a>我的訊息</a>
+</div>
+</div>
+<div class="sys_page_notifys">';
 foreach($result as $row)
 {
     $query2 = "
-    SELECT user_name FROM user_info 
+    SELECT user_name,user_account ,user_img_name FROM user_info 
     WHERE user_account = '".$row['to_user_id']."' 
     ";
-
+    
     $result2 = mysqli_query($conn,$query2);
+    $pic='uploads/person.jpg';
+        
     if (mysqli_num_rows($result2) > 0) {
         while($row2 = mysqli_fetch_assoc($result2)) {
-            $output .= '
-            <tr>
+            /*$output .= '
+            <tr class="start_chat" data-touserid="'.$row['to_user_id'].'" data-tousername="'.$row2['user_name'].'">
             <td>'.$row2['user_name'].' '.$row['chat_msg'].''.count_unseen_message($_COOKIE['name'], $row['to_user_id'], $conn).'</td>
-            <td><button type="button" class="btn btn-info btn-xs start_chat" data-touserid="'.$row['to_user_id'].'" data-tousername="'.$row2['user_name'].'">Start Chat</button></td>
             </tr>
-            ';
+            ';*/
+            if($row2['user_img_name']!=null){
+                $pic='uploads/'.$row2['user_img_name'];
+            }
+            $output .= '
+            <div class="notify start_chat" data-touserid="'.$row['to_user_id'].'" data-tousername="'.$row2['user_name'].'" style="'.count_unseen_notify(count_unseen_message($_COOKIE['name'], $row['to_user_id'], $conn)).'">
+            <img src="'.$pic.'"style="width: 50px ; height: 50px;border-radius:50px;margin-right:10px;">
+            <div class="chat_msg">
+            <a>'.$row2['user_name'].'( '.$row2['user_account'].' )</a>
+            <a>'.$row['chat_msg'].'</a>
+            </div>
+            <a>'.count_unseen_message($_COOKIE['name'], $row['to_user_id'], $conn).'</a>
+            </div>';
         }
     } else {
         echo "0 结果";
@@ -50,9 +60,20 @@ foreach($result as $row)
     
 }
 
-$output .= '</table>';
+$output .= '</div>';
 
 echo $output;
 
-
+function count_unseen_notify($read_status)
+{
+    $output = '';
+    if($read_status == '')
+    {
+    $output = 'color:#717171;';
+    }
+    else{
+    $output = 'font-weight: bold;';
+    }
+    return $output;
+} 
 ?>

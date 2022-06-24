@@ -19,7 +19,7 @@ if (!mysqli_num_rows($result))
     
 }
 else{
-    header('Location: home.php');
+    header('Location: ./home.php');
 }
 }
 

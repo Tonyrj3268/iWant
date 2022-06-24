@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>通知</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="./css/style.css">
@@ -20,7 +20,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <style>
-
+.form-group{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: #498EAF;
+    border-radius: 0px 0px 20px 20px;
+}
 .notify:hover{
     color: blue;
     text-decoration: underline;
@@ -80,6 +86,20 @@
 }
 .ui-dialog-title{
     font-size: 24px;
+}
+.ui-dialog-titlebar{
+    background-color: #498EAF;
+    border-radius: 30px 30px 0px 0px;
+    height: 50px;
+}
+.notify_dialog{
+    position: absolute;
+    left:633px;
+    top: 205px;
+    width: 745px;
+    height: 500px;
+    border-radius: 30px;
+
 }
 
 </style>  

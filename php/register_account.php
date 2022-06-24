@@ -4,16 +4,16 @@
     $repassword=$_POST['repassword'];
 
     if(empty($account)){
-        echo "account is required";
+        echo "請輸入帳號";
     }
     else if(empty($password)){
-        echo "password is required";
+        echo "請輸入密碼";
     }
     else if(empty($repassword)){
-        echo "repassword is required";
+        echo "請輸入第二次密碼";
     }
     else if($password != $repassword){
-        echo "check password and repassword";
+        echo "請檢查兩次密碼是否輸入相同";
     }
     else{
         require_once 'connect.php';
@@ -22,9 +22,9 @@
         $result = mysqli_query($conn,$query);
         if(mysqli_num_rows($result)==0){
             echo "accept";
-        }
+        } 
         else{
-            echo "already have this account";
+            echo "此帳號已被使用";
         }
 
     }
